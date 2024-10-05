@@ -1,0 +1,161 @@
+---
+title: "Relatório: base de dados pinguins"
+author: "Ananda Vilar Vidal e José Jardel Alves de Medeiros"
+format: html
+number-sections: true
+toc: true
+toc-depth: 3
+lang: pt
+bibliography: refs/refs.bib
+date: today
+#header-includes:
+#  - \usepackage{undertilde}
+editor: visual
+---
+
+```{r Setup}
+
+#| echo: true
+
+# Setup para o relatório Quarto
+
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+
+```
+
+# Introdução
+
+Este relatório tem por objetivo ajustar um modelo de regressão linear múltiplo com o intuito de explorar a base de dados de pinguins para identificar determinadas características (medidas) associadas a 3 espécies de pinguins sobre a característica `profundidade do bico` (`“profundidade_bico”`).
+
+Neste contexto a regressão será realizada sobre a conhecida base de dados `Pinguins`, que inclui espécies de pinguins e ilhas do Arquipélago Palmer, as medidas de cada espécie (comprimento da nadadeira, massa corporal e dimensões do bico), o sexo de cada pinguim e ano de documentação.
+
+Aqui estão fotos das espécies de pinguins:
+
+![](Especies_de_Pinguins.jpg){#fig-especiespinguins}
+
+# Os dados
+
+É possível baixar os dados da biblioteca `dados` do *R*. Apenas carregando a biblioteca, um data frame chamado `pinguins` fica disponibilizado e poderá ser usado imediatamente. Para a visualização das características dos dados utiliza-se o glimpse da biblioteca `dplyr`, que informa a quantidade de linhas, colunas e as variáveis. Para ter acesso faça os seguintes passos:
+
+```{r}
+
+library(dados)
+
+library(dplyr)
+
+glimpse(pinguins)
+
+unique(pinguins$especie) # verifica as categorias distintas
+
+table(pinguins$especie) # Frequencias por categoria
+
+```
+
+Visualizando rapidamente a estrutura da base de dados, observamos as seguintes variáveis:
+
+-   `especie`: espécies de pinguim (Pinguim-de-adélia, Pinguim-de-barbicha e Pinguim-gentoo);
+
+-   `ilha`: ilha do Arquipélago Palmer, na Antártida (Biscoe, Dream, Togersen);
+
+-   `comprimento_bico`: número inteiro que indica o comprimento do bico (em milímetros);
+
+-   `profundidade_bico`: número inteiro que indica a profundidade do bico (em milímetros);
+
+-   `comprimento_nadadeira`: número inteiro que indica o comprimento da nadadeira (em milímetros);
+
+-   `massa_corporal`: número inteiro que indica a massa corporal (em gramas);
+
+-   `sexo`: fator que indica o sexo do(a) pinguim (macho, fêmea);
+
+-   `ano`: número inteiro que indica o ano de estudo (2007, 2008 ou 2009).
+
+## Análise exploratória dos dados
+
+```{r}
+
+library(skimr)
+
+dados <- pinguins
+
+skim(dados)
+
+```
+
+### Comentários:
+
+...
+
+#### Editar:
+Através da visão geral resumida do dataframe é possível obter um resumo de várias estatísticas descritivas e informações sobre cada coluna do dataframe `dados` (`pinguins`).
+
+-   Resumo das Colunas: cada coluna do dataframe é listada com seu nome e o tipo de dado de cada coluna é mostrado.
+
+-   Estatísticas Descritivas: número de valores (n), média, mediana, mínimo, máximo, desvio padrão e outros quantis (percentis).
+
+-   Valores Faltantes:
+Um resumo da quantidade de valores faltantes (NA) para cada coluna.
+
+
+### Análise de correlação {#sec-GGally}
+
+```{r}
+
+library(GGally)  # Pacote para função ggpairs
+library(ggplot2) # Pacote para salvar gráficos
+
+### Multicolinearidade: r > 0.9 (ou 0.8)
+
+graf1 <- ggpairs(pinguins, columns = 1:4, ggplot2::aes(colour = especie))
+
+graf1
+
+# Salvando o gráfico em .jpeg
+ggsave("Grafico_dispersao_pinguins.jpeg")
+
+```
+
+#### Comentários
+
+...
+
+##### Editar:
+
+Com relação à análise de correlação é algo desejável observar altas correlações das variáveis independentes com relação à variável dependente/resposta que no presente caso é `profundidade do bico` (`profundidade_bico`).
+
+Por outro lado, altas correlações entre as demais variáveis a serem utilizadas como variáveis independentes/preditoras nos dá indícios de que haverá **problemas de multicolinearidade** ao ajustar o MRLM. **Como regra geral** isto ocorre quando há **correlações** $\geq 0.9$ ou $\geq 0.8$ **entre** as **variáveis preditoras**.
+
+Dito isto, é possível observar que:
+
+1)  A variável dependente `Sepal.Length`:
+
+<!-- -->
+
+i.  não apresenta correlação linear significante com a variável `Sepal.Width` (r= -0.118, p \> 0.10);
+
+ii. apresenta correlação linear significante com a variável `Petal.Length` (r= 0.872, p \< 0.001);
+
+iii. apresenta correlação linear significante com a variável `Petal.Width` (r= 0.818, p \< 0.001);
+
+<!-- -->
+
+2)  A variável independente `Sepal.Width`:
+
+<!-- -->
+
+i)  apresenta correlação linear significativa com a variável *independente* `Petal.Length` (r=-0.428, p \< 0.001).
+
+Como esta correlação, em valor absoluto não é superior a 0.9 (ou 0.8) não há indício para um posterior problema de multicolinearidade.
+
+ii) apresenta correlação linear significativa com a variável *independente* `Petal.Width` (r=-0.366, p \< 0.001).
+
+Como esta correlação, em valor absoluto não é superior a 0.9 (ou 0.8) não há indício para um posterior problema de multicolinearidade.
+
+3)  A variável independente `Petal.Length`:
+
+<!-- -->
+
+i)  apresenta correlação linear significativa com a variável *independente* `Petal.Width` (r=0.963, p \< 0.001).
+
+Como esta correlação, em valor absoluto é superior a 0.9 (ou 0.8) **há indício** para um posterior **problema de multicolinearidade**. Observa-se, ainda, que tal correlação é do tipo forte e positiva, ou seja, **as medidas** associadas às **pétalas** se relacionam de forma **fortemente positiva**.
+
