@@ -109,14 +109,41 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">1</span> Introdução</a></li>
-  <li><a href="#os-dados" id="toc-os-dados" class="nav-link" data-scroll-target="#os-dados"><span class="header-section-number">2</span> Os dados</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">1</span> 1 - Introdução</a></li>
+  <li><a href="#os-dados" id="toc-os-dados" class="nav-link" data-scroll-target="#os-dados"><span class="header-section-number">2</span> 2 - Os dados</a>
   <ul class="collapse">
-  <li><a href="#análise-exploratória-dos-dados" id="toc-análise-exploratória-dos-dados" class="nav-link" data-scroll-target="#análise-exploratória-dos-dados"><span class="header-section-number">2.1</span> Análise exploratória dos dados</a>
+  <li><a href="#análise-exploratória-dos-dados" id="toc-análise-exploratória-dos-dados" class="nav-link" data-scroll-target="#análise-exploratória-dos-dados"><span class="header-section-number">2.1</span> 2.1 - Análise exploratória dos dados</a>
   <ul class="collapse">
-  <li><a href="#comentários" id="toc-comentários" class="nav-link" data-scroll-target="#comentários"><span class="header-section-number">2.1.1</span> Comentários:</a></li>
-  <li><a href="#sec-GGally" id="toc-sec-GGally" class="nav-link" data-scroll-target="#sec-GGally"><span class="header-section-number">2.1.2</span> Análise de correlação</a></li>
+  <li><a href="#comentários" id="toc-comentários" class="nav-link" data-scroll-target="#comentários"><span class="header-section-number">2.1.1</span> 2.1.1 - Comentários:</a></li>
+  <li><a href="#editar" id="toc-editar" class="nav-link" data-scroll-target="#editar"><span class="header-section-number">2.1.2</span> 2.1.2 - Editar:</a></li>
   </ul></li>
+  <li><a href="#sec-GGally" id="toc-sec-GGally" class="nav-link" data-scroll-target="#sec-GGally"><span class="header-section-number">2.2</span> Análise de correlação</a>
+  <ul class="collapse">
+  <li><a href="#comentários-1" id="toc-comentários-1" class="nav-link" data-scroll-target="#comentários-1"><span class="header-section-number">2.2.1</span> Comentários</a></li>
+  <li><a href="#editar-1" id="toc-editar-1" class="nav-link" data-scroll-target="#editar-1"><span class="header-section-number">2.2.2</span> Editar:</a></li>
+  <li><a href="#analisando-o-vif" id="toc-analisando-o-vif" class="nav-link" data-scroll-target="#analisando-o-vif"><span class="header-section-number">2.2.3</span> Analisando o VIF</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#modelos" id="toc-modelos" class="nav-link" data-scroll-target="#modelos"><span class="header-section-number">3</span> 3 - Modelos</a>
+  <ul class="collapse">
+  <li><a href="#modelo-1-com-todas-as-variáveis-independentes." id="toc-modelo-1-com-todas-as-variáveis-independentes." class="nav-link" data-scroll-target="#modelo-1-com-todas-as-variáveis-independentes."><span class="header-section-number">3.1</span> 3.1 - Modelo 1: Com todas as variáveis independentes.</a></li>
+  <li><a href="#modelo-2-sem-a-variável-espécie." id="toc-modelo-2-sem-a-variável-espécie." class="nav-link" data-scroll-target="#modelo-2-sem-a-variável-espécie."><span class="header-section-number">3.2</span> 3.2 - Modelo 2: Sem a variável espécie.</a></li>
+  <li><a href="#modelo-3-sem-as-variáveis-especie-e-ano." id="toc-modelo-3-sem-as-variáveis-especie-e-ano." class="nav-link" data-scroll-target="#modelo-3-sem-as-variáveis-especie-e-ano."><span class="header-section-number">3.3</span> 3.3 - Modelo 3: Sem as variáveis especie e ano.</a></li>
+  <li><a href="#modelo-4-sem-as-variáveis-espécie-ano-e-comprimento_bico." id="toc-modelo-4-sem-as-variáveis-espécie-ano-e-comprimento_bico." class="nav-link" data-scroll-target="#modelo-4-sem-as-variáveis-espécie-ano-e-comprimento_bico."><span class="header-section-number">3.4</span> 3.4 - Modelo 4: Sem as variáveis espécie, ano e comprimento_bico.</a></li>
+  </ul></li>
+  <li><a href="#métodos-para-selecionar-o-melhor-modelo." id="toc-métodos-para-selecionar-o-melhor-modelo." class="nav-link" data-scroll-target="#métodos-para-selecionar-o-melhor-modelo."><span class="header-section-number">4</span> 4 - Métodos para selecionar o melhor modelo.</a>
+  <ul class="collapse">
+  <li><a href="#medida-aic" id="toc-medida-aic" class="nav-link" data-scroll-target="#medida-aic"><span class="header-section-number">4.1</span> 4.1 - Medida AIC</a></li>
+  <li><a href="#medida-bic" id="toc-medida-bic" class="nav-link" data-scroll-target="#medida-bic"><span class="header-section-number">4.2</span> 4.2 - Medida BIC</a></li>
+  <li><a href="#comparação-de-modelos-encaixados-anova" id="toc-comparação-de-modelos-encaixados-anova" class="nav-link" data-scroll-target="#comparação-de-modelos-encaixados-anova"><span class="header-section-number">4.3</span> 4.3 - Comparação de modelos encaixados (ANOVA)</a></li>
+  </ul></li>
+  <li><a href="#seleção-automática" id="toc-seleção-automática" class="nav-link" data-scroll-target="#seleção-automática"><span class="header-section-number">5</span> 5 - Seleção automática</a>
+  <ul class="collapse">
+  <li><a href="#a-partir-do-modelo-1" id="toc-a-partir-do-modelo-1" class="nav-link" data-scroll-target="#a-partir-do-modelo-1"><span class="header-section-number">5.1</span> 5.1 A partir do modelo 1</a></li>
+  </ul></li>
+  <li><a href="#modelo-selecionado-modelo4" id="toc-modelo-selecionado-modelo4" class="nav-link" data-scroll-target="#modelo-selecionado-modelo4"><span class="header-section-number">6</span> 6 - Modelo selecionado (modelo4)</a>
+  <ul class="collapse">
+  <li><a href="#verificando-os-pressupostos-do-mrlm" id="toc-verificando-os-pressupostos-do-mrlm" class="nav-link" data-scroll-target="#verificando-os-pressupostos-do-mrlm"><span class="header-section-number">6.1</span> 6.1 - Verificando os pressupostos do MRLM</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -142,7 +169,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 de outubro de 2024</p>
+      <p class="date">6 de outubro de 2024</p>
     </div>
   </div>
   
@@ -162,9 +189,9 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="introdução" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introdução</h1>
-<p>Este relatório tem por objetivo ajustar um modelo de regressão linear múltiplo com o intuito de explorar a base de dados de pinguins para identificar determinadas características (medidas) associadas a 3 espécies de pinguins sobre a característica <code>profundidade do bico</code> (<code>“profundidade_bico”</code>).</p>
-<p>Neste contexto a regressão será realizada sobre a conhecida base de dados <code>Pinguins</code>, que inclui espécies de pinguins e ilhas do Arquipélago Palmer, as medidas de cada espécie (comprimento da nadadeira, massa corporal e dimensões do bico), o sexo de cada pinguim e ano de documentação.</p>
+<h1 data-number="1"><span class="header-section-number">1</span> 1 - Introdução</h1>
+<p>Este relatório tem por objetivo ajustar um modelo de regressão linear múltiplo com o intuito de explorar a base de dados de <code>pinguins</code> para identificar determinadas características (medidas) associadas a 3 espécies de pinguins sobre a característica <code>profundidade do bico</code> (<code>“profundidade_bico”</code>).</p>
+<p>Neste contexto, a regressão será realizada sobre a conhecida base de dados <code>Pinguins</code>, que inclui espécies de pinguins e ilhas do Arquipélago Palmer, as medidas de cada espécie (comprimento da nadadeira, massa corporal e dimensões do bico), o sexo de cada pinguim e ano de documentação.</p>
 <p>Aqui estão fotos das espécies de pinguins:</p>
 <div id="fig-especiespinguins" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -178,7 +205,7 @@ Figura&nbsp;1
 </div>
 </section>
 <section id="os-dados" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Os dados</h1>
+<h1 data-number="2"><span class="header-section-number">2</span> 2 - Os dados</h1>
 <p>É possível baixar os dados da biblioteca <code>dados</code> do <em>R</em>. Apenas carregando a biblioteca, um data frame chamado <code>pinguins</code> fica disponibilizado e poderá ser usado imediatamente. Para a visualização das características dos dados utiliza-se o glimpse da biblioteca <code>dplyr</code>, que informa a quantidade de linhas, colunas e as variáveis. Para ter acesso faça os seguintes passos:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dados)</span>
@@ -198,12 +225,12 @@ $ massa_corporal        &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675
 $ sexo                  &lt;fct&gt; macho, fêmea, fêmea, NA, fêmea, macho, fêmea, ma…
 $ ano                   &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, …</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(pinguins<span class="sc">$</span>especie) <span class="co"># verifica as categorias distintas</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(pinguins<span class="sc">$</span>especie) <span class="co"># verifica as espécies distintas</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Pinguim-de-adélia   Pinguim-gentoo      Pinguim-de-barbicha
 Levels: Pinguim-de-adélia Pinguim-de-barbicha Pinguim-gentoo</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pinguins<span class="sc">$</span>especie) <span class="co"># Frequencias por categoria</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pinguins<span class="sc">$</span>especie) <span class="co"># Frequencias por espécie</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   Pinguim-de-adélia Pinguim-de-barbicha      Pinguim-gentoo 
@@ -213,16 +240,16 @@ Levels: Pinguim-de-adélia Pinguim-de-barbicha Pinguim-gentoo</code></pre>
 <p>Visualizando rapidamente a estrutura da base de dados, observamos as seguintes variáveis:</p>
 <ul>
 <li><p><code>especie</code>: espécies de pinguim (Pinguim-de-adélia, Pinguim-de-barbicha e Pinguim-gentoo);</p></li>
-<li><p><code>ilha</code>: ilha do Arquipélago Palmer, na Antártida (Biscoe, Dream, Togersen);</p></li>
+<li><p><code>ilha</code>: ilha do Arquipélago Palmer na Antártida (Biscoe, Dream, Togersen);</p></li>
 <li><p><code>comprimento_bico</code>: número inteiro que indica o comprimento do bico (em milímetros);</p></li>
 <li><p><code>profundidade_bico</code>: número inteiro que indica a profundidade do bico (em milímetros);</p></li>
 <li><p><code>comprimento_nadadeira</code>: número inteiro que indica o comprimento da nadadeira (em milímetros);</p></li>
 <li><p><code>massa_corporal</code>: número inteiro que indica a massa corporal (em gramas);</p></li>
 <li><p><code>sexo</code>: fator que indica o sexo do(a) pinguim (macho, fêmea);</p></li>
-<li><p><code>ano</code>: número inteiro que indica o ano de estudo (2007, 2008 ou 2009).</p></li>
+<li><p><code>ano</code>: número inteiro que indica o ano da coleta dos dados (2007, 2008 ou 2009).</p></li>
 </ul>
 <section id="análise-exploratória-dos-dados" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="análise-exploratória-dos-dados"><span class="header-section-number">2.1</span> Análise exploratória dos dados</h2>
+<h2 data-number="2.1" class="anchored" data-anchor-id="análise-exploratória-dos-dados"><span class="header-section-number">2.1</span> 2.1 - Análise exploratória dos dados</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -419,10 +446,11 @@ Levels: Pinguim-de-adélia Pinguim-de-barbicha Pinguim-gentoo</code></pre>
 </div>
 </div>
 <section id="comentários" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="comentários"><span class="header-section-number">2.1.1</span> Comentários:</h3>
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="comentários"><span class="header-section-number">2.1.1</span> 2.1.1 - Comentários:</h3>
 <p>…</p>
-<section id="editar" class="level4" data-number="2.1.1.1">
-<h4 data-number="2.1.1.1" class="anchored" data-anchor-id="editar"><span class="header-section-number">2.1.1.1</span> Editar:</h4>
+</section>
+<section id="editar" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="editar"><span class="header-section-number">2.1.2</span> 2.1.2 - Editar:</h3>
 <p>Através da visão geral resumida do dataframe é possível obter um resumo de várias estatísticas descritivas e informações sobre cada coluna do dataframe <code>dados</code> (<code>pinguins</code>).</p>
 <ul>
 <li><p>Resumo das Colunas: cada coluna do dataframe é listada com seu nome e o tipo de dado de cada coluna é mostrado.</p></li>
@@ -431,17 +459,23 @@ Levels: Pinguim-de-adélia Pinguim-de-barbicha Pinguim-gentoo</code></pre>
 </ul>
 </section>
 </section>
-<section id="sec-GGally" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="sec-GGally"><span class="header-section-number">2.1.2</span> Análise de correlação</h3>
+<section id="sec-GGally" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-GGally"><span class="header-section-number">2.2</span> Análise de correlação</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)  <span class="co"># Pacote para função ggpairs</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># Pacote para salvar gráficos</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Multicolinearidade: r &gt; 0.9 (ou 0.8)</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>graf1 <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(pinguins, <span class="at">columns =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">colour =</span> especie))</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>graf1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>graf1 <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(pinguins, <span class="at">columns =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>, ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">colour =</span> especie))  <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),  <span class="co"># Aumenta o texto no eixo X</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),  <span class="co"># Aumenta o texto no eixo Y</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),   <span class="co"># Aumenta os rótulos das facetas</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    )   </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>graf1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -452,47 +486,529 @@ Levels: Pinguim-de-adélia Pinguim-de-barbicha Pinguim-gentoo</code></pre>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando o gráfico em .jpeg</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"Grafico_dispersao_pinguins.jpeg"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="comentários-1" class="level4" data-number="2.1.2.1">
-<h4 data-number="2.1.2.1" class="anchored" data-anchor-id="comentários-1"><span class="header-section-number">2.1.2.1</span> Comentários</h4>
+<section id="comentários-1" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="comentários-1"><span class="header-section-number">2.2.1</span> Comentários</h3>
 <p>…</p>
-<section id="editar-1" class="level5" data-number="2.1.2.1.1">
-<h5 data-number="2.1.2.1.1" class="anchored" data-anchor-id="editar-1"><span class="header-section-number">2.1.2.1.1</span> Editar:</h5>
+</section>
+<section id="editar-1" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="editar-1"><span class="header-section-number">2.2.2</span> Editar:</h3>
 <p>Com relação à análise de correlação é algo desejável observar altas correlações das variáveis independentes com relação à variável dependente/resposta que no presente caso é <code>profundidade do bico</code> (<code>profundidade_bico</code>).</p>
 <p>Por outro lado, altas correlações entre as demais variáveis a serem utilizadas como variáveis independentes/preditoras nos dá indícios de que haverá <strong>problemas de multicolinearidade</strong> ao ajustar o MRLM. <strong>Como regra geral</strong> isto ocorre quando há <strong>correlações</strong> <span class="math inline">\(\geq 0.9\)</span> ou <span class="math inline">\(\geq 0.8\)</span> <strong>entre</strong> as <strong>variáveis preditoras</strong>.</p>
 <p>Dito isto, é possível observar que:</p>
 <ol type="1">
-<li>A variável dependente <code>Sepal.Length</code>:</li>
+<li>A variável dependente <code>profundidade_bico</code>:</li>
 </ol>
 <!-- -->
 <ol type="i">
-<li><p>não apresenta correlação linear significante com a variável <code>Sepal.Width</code> (r= -0.118, p &gt; 0.10);</p></li>
-<li><p>apresenta correlação linear significante com a variável <code>Petal.Length</code> (r= 0.872, p &lt; 0.001);</p></li>
-<li><p>apresenta correlação linear significante com a variável <code>Petal.Width</code> (r= 0.818, p &lt; 0.001);</p></li>
-</ol>
-<!-- -->
-<ol start="2" type="1">
-<li>A variável independente <code>Sepal.Width</code>:</li>
-</ol>
-<!-- -->
-<ol type="i">
-<li>apresenta correlação linear significativa com a variável <em>independente</em> <code>Petal.Length</code> (r=-0.428, p &lt; 0.001).</li>
+<li>apresenta correlação linear significante com a variável <code>comprimento_bico</code> (r= -0.235, p &lt; 0.001);</li>
 </ol>
 <p>Como esta correlação, em valor absoluto não é superior a 0.9 (ou 0.8) não há indício para um posterior problema de multicolinearidade.</p>
 <ol start="2" type="i">
-<li>apresenta correlação linear significativa com a variável <em>independente</em> <code>Petal.Width</code> (r=-0.366, p &lt; 0.001).</li>
+<li>apresenta correlação linear significante com a variável <code>comprimento_nadadeira</code> (r= -0.584, p &lt; 0.001);</li>
 </ol>
 <p>Como esta correlação, em valor absoluto não é superior a 0.9 (ou 0.8) não há indício para um posterior problema de multicolinearidade.</p>
-<ol start="3" type="1">
-<li>A variável independente <code>Petal.Length</code>:</li>
+<ol start="3" type="i">
+<li>apresenta correlação linear significante com a variável <code>massa_corporal</code> (r= -0.472, p &lt; 0.001);</li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li>A variável independente <code>comprimento_bico</code>:</li>
 </ol>
 <!-- -->
 <ol type="i">
-<li>apresenta correlação linear significativa com a variável <em>independente</em> <code>Petal.Width</code> (r=0.963, p &lt; 0.001).</li>
+<li>apresenta correlação linear significativa com a variável <em>independente</em> <code>comprimento_nadadeira</code> (r=0.656, p &lt; 0.001).</li>
 </ol>
-<p>Como esta correlação, em valor absoluto é superior a 0.9 (ou 0.8) <strong>há indício</strong> para um posterior <strong>problema de multicolinearidade</strong>. Observa-se, ainda, que tal correlação é do tipo forte e positiva, ou seja, <strong>as medidas</strong> associadas às <strong>pétalas</strong> se relacionam de forma <strong>fortemente positiva</strong>.</p>
+<p>Como esta correlação, em valor absoluto não é superior a 0.9 (ou 0.8) não há indício para um posterior problema de multicolinearidade.</p>
+<ol start="2" type="i">
+<li>apresenta correlação linear significativa com a variável <em>independente</em> <code>massa_corporal</code> (r=0.595, p &lt; 0.001).</li>
+</ol>
+<p>Como esta correlação, em valor absoluto não é superior a 0.9 (ou 0.8) não há indício para um posterior problema de multicolinearidade.</p>
+<!-- -->
+<ol start="3" type="1">
+<li>A variável independente <code>comprimento_nadadeira</code>:</li>
+</ol>
+<!-- -->
+<ol type="i">
+<li>apresenta correlação linear significativa com a variável <em>independente</em> <code>massa_corporal</code> (r=0.871, p &lt; 0.001).</li>
+</ol>
+<!-- -->
+<p>Como esta correlação, em valor absoluto é superior a 0.8 <strong>há indício</strong> para um posterior <strong>problema de multicolinearidade</strong>. Observa-se, ainda, que tal correlação é do tipo forte e positiva, ou seja, <strong>as medidas</strong> associadas aos <strong>pinguins</strong> se relacionam de forma <strong>fortemente positiva</strong>.</p>
+</section>
+<section id="analisando-o-vif" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="analisando-o-vif"><span class="header-section-number">2.2.3</span> Analisando o VIF</h3>
+<p>O Fator de Inflação de Variância (VIF) é uma forma de identificar multicolinearidade.</p>
+<p>Para investigar mais sobre multicolinearidade, sugerimos a leitura do seguinte material: <a href="https://www.statology.org/multicollinearity-regression/" class="uri">https://www.statology.org/multicollinearity-regression/</a></p>
+<p>O VIF é calculado da seguinte forma:</p>
+<p>Para cada variável independente faz-se uma regressão linear dessa variável para todas as outras variáveis independentes, obtendo o <span class="math inline">\(R^2\)</span> dessa regressão.</p>
+<p>Com o <span class="math inline">\(R^2\)</span>, o VIF = 1/(1 - <span class="math inline">\(R^2\)</span>)</p>
+<p>Por convenção, um VIF &gt; 10 indica um problema de multicolinearidade.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Modelo inicial com todas as variáveis</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>modelo1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(profundidade_bico <span class="sc">~</span> comprimento_bico <span class="sc">+</span> massa_corporal <span class="sc">+</span> comprimento_nadadeira <span class="sc">+</span> sexo <span class="sc">+</span> ano <span class="sc">+</span> ilha <span class="sc">+</span> especie, <span class="at">data =</span> pinguins)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                           GVIF Df GVIF^(1/(2*Df))
+comprimento_bico       6.167650  1        2.483475
+massa_corporal         7.892055  1        2.809280
+comprimento_nadadeira  8.377861  1        2.894453
+sexo                   2.483368  1        1.575871
+ano                    1.163562  1        1.078685
+ilha                   3.756428  2        1.392175
+especie               45.302557  2        2.594363</code></pre>
+</div>
+</div>
+<p>Como pode-se observar, a variável especie possui um VIF de aproximadamente 45, por ser maior que 10, há um problema de multicolinearidade.</p>
 </section>
 </section>
 </section>
+<section id="modelos" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 3 - Modelos</h1>
+<section id="modelo-1-com-todas-as-variáveis-independentes." class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="modelo-1-com-todas-as-variáveis-independentes."><span class="header-section-number">3.1</span> 3.1 - Modelo 1: Com todas as variáveis independentes.</h2>
+<p>Como vimos anteriormente, o modelo 1 se dá com todas as variáveis disponíveis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = profundidade_bico ~ comprimento_bico + massa_corporal + 
+    comprimento_nadadeira + sexo + ano + ilha + especie, data = pinguins)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.02812 -0.53903  0.00004  0.43546  2.71777 
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 3.095e+02  1.144e+02   2.706  0.00718 ** 
+comprimento_bico            4.110e-02  1.959e-02   2.098  0.03665 *  
+massa_corporal              4.574e-04  1.505e-04   3.040  0.00256 ** 
+comprimento_nadadeira       2.705e-02  8.907e-03   3.037  0.00258 ** 
+sexomacho                   8.632e-01  1.357e-01   6.359 6.91e-10 ***
+ano                        -1.494e-01  5.723e-02  -2.610  0.00948 ** 
+ilhaDream                  -1.641e-01  1.599e-01  -1.026  0.30567    
+ilhaTorgersen              -3.508e-03  1.671e-01  -0.021  0.98327    
+especiePinguim-de-barbicha -4.166e-01  2.462e-01  -1.692  0.09163 .  
+especiePinguim-gentoo      -5.150e+00  3.059e-01 -16.834  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.7859 on 323 degrees of freedom
+  (11 observations deleted due to missingness)
+Multiple R-squared:  0.8451,    Adjusted R-squared:  0.8407 
+F-statistic: 195.7 on 9 and 323 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Ao observar os dados, percebe-se uma contradição no que se diz respeito as variáveis comprimento_bico, massa_corporal e comprimento_nadadeira, uma vez que os coeficientes de Pearson de cada são negativos, mas as estimativas dos mesmos são positivos.</p>
+</section>
+<section id="modelo-2-sem-a-variável-espécie." class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="modelo-2-sem-a-variável-espécie."><span class="header-section-number">3.2</span> 3.2 - Modelo 2: Sem a variável espécie.</h2>
+<p>Por a variável espécie possuir um VIF elevado, vamos montar nosso modelo 2 sem a mesma.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>modelo2 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo1, <span class="sc">~</span> . <span class="sc">-</span>especie)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = profundidade_bico ~ comprimento_bico + massa_corporal + 
+    comprimento_nadadeira + sexo + ano + ilha, data = pinguins)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.7329 -0.7450 -0.1286  0.6913  4.4479 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           -1.124e+02  1.550e+02  -0.725  0.46888    
+comprimento_bico       9.445e-03  1.680e-02   0.562  0.57446    
+massa_corporal        -5.304e-04  1.885e-04  -2.814  0.00518 ** 
+comprimento_nadadeira -5.480e-02  1.057e-02  -5.184 3.82e-07 ***
+sexomacho              2.194e+00  1.486e-01  14.766  &lt; 2e-16 ***
+ano                    7.010e-02  7.738e-02   0.906  0.36567    
+ilhaDream              1.032e+00  1.849e-01   5.584 4.97e-08 ***
+ilhaTorgersen          1.127e+00  2.150e-01   5.239 2.91e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.095 on 325 degrees of freedom
+  (11 observations deleted due to missingness)
+Multiple R-squared:  0.697, Adjusted R-squared:  0.6905 
+F-statistic: 106.8 on 7 and 325 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Observando os dados, percebe-se que a variável <code>comprimento_bico</code> ainda continua contraditória, uma vez que sua estimativa é positiva e o Coeficiente de Pearson negativa. Ademais, o seu valor p é de aproximadamente 0.57, ou seja, não é significativo.</p>
+<p>Além da variável <code>comprimento_bico</code>, a variável <code>ano</code>apresenta um valor p &gt; 0.1, alto o suficiente para não ser significante.</p>
+</section>
+<section id="modelo-3-sem-as-variáveis-especie-e-ano." class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="modelo-3-sem-as-variáveis-especie-e-ano."><span class="header-section-number">3.3</span> 3.3 - Modelo 3: Sem as variáveis especie e ano.</h2>
+<p>Então, construimos um terceiro modelo, dessa vez retirando não só a variável <code>espécie</code>, mas também a variável <code>ano</code>. De início, não retiremos a <code>comprimento_bico</code> para analisar seu comportamento, como também das demais variáveis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>modelo3 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo2, <span class="sc">~</span> . <span class="sc">-</span>ano)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = profundidade_bico ~ comprimento_bico + massa_corporal + 
+    comprimento_nadadeira + sexo + ilha, data = pinguins)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.6652 -0.7570 -0.0978  0.6691  4.5297 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           28.0101282  1.3710360  20.430  &lt; 2e-16 ***
+comprimento_bico       0.0081433  0.0167377   0.487   0.6269    
+massa_corporal        -0.0005690  0.0001835  -3.100   0.0021 ** 
+comprimento_nadadeira -0.0520587  0.0101260  -5.141 4.72e-07 ***
+sexomacho              2.2059792  0.1480103  14.904  &lt; 2e-16 ***
+ilhaDream              1.0307490  0.1848251   5.577 5.15e-08 ***
+ilhaTorgersen          1.1245487  0.2149605   5.231 3.02e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.095 on 326 degrees of freedom
+  (11 observations deleted due to missingness)
+Multiple R-squared:  0.6963,    Adjusted R-squared:  0.6907 
+F-statistic: 124.6 on 6 and 326 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>O modelo 3 apresenta que a varriável <code>comprimento_bico</code> apesar de ter diminuido seu estimador, continua positivo contrariando o Coeficiente de Pearson, além do seu alto valor p.</p>
+</section>
+<section id="modelo-4-sem-as-variáveis-espécie-ano-e-comprimento_bico." class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="modelo-4-sem-as-variáveis-espécie-ano-e-comprimento_bico."><span class="header-section-number">3.4</span> 3.4 - Modelo 4: Sem as variáveis espécie, ano e comprimento_bico.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>modelo4 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, <span class="sc">~</span>. <span class="sc">-</span>comprimento_bico)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = profundidade_bico ~ massa_corporal + comprimento_nadadeira + 
+    sexo + ilha, data = pinguins)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.6861 -0.7580 -0.0936  0.6901  4.5334 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           27.9043913  1.3521204  20.638  &lt; 2e-16 ***
+massa_corporal        -0.0005633  0.0001829  -3.079  0.00225 ** 
+comprimento_nadadeira -0.0499521  0.0091429  -5.464 9.26e-08 ***
+sexomacho              2.2176123  0.1458956  15.200  &lt; 2e-16 ***
+ilhaDream              1.0626246  0.1726214   6.156 2.19e-09 ***
+ilhaTorgersen          1.1179289  0.2142790   5.217 3.23e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.094 on 327 degrees of freedom
+  (11 observations deleted due to missingness)
+Multiple R-squared:  0.6961,    Adjusted R-squared:  0.6914 
+F-statistic: 149.8 on 5 and 327 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Este modelo 4 por sua vez apresenta coerência nos estimadores das variáveis analisadas na Análise Exploratória com seus respectivos Coeficientes de Pearson. Além do mais, ao observar o valor p, todas as variáveis apresentam significância.</p>
+</section>
+</section>
+<section id="métodos-para-selecionar-o-melhor-modelo." class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 4 - Métodos para selecionar o melhor modelo.</h1>
+<p>Por existir problema de multicolinearidade no modelo 1, ele não é considerado na seleção.</p>
+<section id="medida-aic" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="medida-aic"><span class="header-section-number">4.1</span> 4.1 - Medida AIC</h2>
+<p>A medida AIC determina que o melhor modelo é o que apresenta o menor valor.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 796.3882</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1015.66</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1014.499</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1012.741</code></pre>
+</div>
+</div>
+<p>Apesar de bem próximos e pela regra não há um indício significativo de real diferença, uma vez que a diferença entre os modelos não é maior que 10. O modelo 4 é preferível aos demais por ser o menor.</p>
+</section>
+<section id="medida-bic" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="medida-bic"><span class="header-section-number">4.2</span> 4.2 - Medida BIC</h2>
+<p>Analogamente ao AIC, a medida BIC determina que o melhor modelo é aquele que apresentar menor valor.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 838.2777</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1049.933</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1044.964</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1039.398</code></pre>
+</div>
+</div>
+<p>O modelo 4 apresenta uma diferença maior que 10 ao modelo 2, então há um indício de real diferença entre modelos. Embora essa diferença não ocorra entre os modelos 3 e 4, o modelo 4 é menor, e portanto, preferível.</p>
+</section>
+<section id="comparação-de-modelos-encaixados-anova" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="comparação-de-modelos-encaixados-anova"><span class="header-section-number">4.3</span> 4.3 - Comparação de modelos encaixados (ANOVA)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo1, modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ano + ilha + especie
+Model 2: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ano + ilha
+  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
+1    323 199.49                                  
+2    325 390.04 -2   -190.55 154.26 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Observa-se que pelo teste F <em>deve rejeitar a hipótese nula</em> e com isso, a remoção da variável <code>especie</code> é significante para a regressão.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo1, modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ano + ilha + especie
+Model 2: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ilha
+  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
+1    323 199.49                                  
+2    326 391.02 -3   -191.53 103.37 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Observa-se que pelo teste F <em>deve rejeitar a hipótese nula</em> e com isso, a remoção das variáveis <code>especie</code> e <code>ano</code> são significantes para a regressão.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo1, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ano + ilha + especie
+Model 2: profundidade_bico ~ massa_corporal + comprimento_nadadeira + 
+    sexo + ilha
+  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
+1    323 199.49                                  
+2    327 391.31 -4   -191.82 77.645 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Observa-se que pelo teste F <em>deve rejeitar a hipótese nula</em> e com isso, a remoção das variáveis <code>especie</code>, <code>ano</code> e <code>comprimento_bico</code> são significantes para a regressão.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo2, modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ano + ilha
+Model 2: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ilha
+  Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
+1    325 390.04                           
+2    326 391.02 -1  -0.98484 0.8206 0.3657</code></pre>
+</div>
+</div>
+<p>Observa-se que pelo teste F não deve rejeitar a hipótese nula, logo a remoção da variável <code>ano</code> não melhora significamente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo2, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ano + ilha
+Model 2: profundidade_bico ~ massa_corporal + comprimento_nadadeira + 
+    sexo + ilha
+  Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
+1    325 390.04                           
+2    327 391.31 -2   -1.2688 0.5286 0.5899</code></pre>
+</div>
+</div>
+<p>Observa-se que pelo teste F não deve rejeitar a hipótese nula, logo a remoção da variável <code>ano</code> e da <code>comprimento_bico</code> não melhora significamente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo3, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ilha
+Model 2: profundidade_bico ~ massa_corporal + comprimento_nadadeira + 
+    sexo + ilha
+  Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
+1    326 391.02                           
+2    327 391.31 -1  -0.28392 0.2367 0.6269</code></pre>
+</div>
+</div>
+<p>Observa-se que pelo teste F não deve rejeitar a hipótese nula, logo a remoção da variável <code>comprimento_bico</code> não melhora significamente.</p>
+</section>
+</section>
+<section id="seleção-automática" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 5 - Seleção automática</h1>
+<section id="a-partir-do-modelo-1" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="a-partir-do-modelo-1"><span class="header-section-number">5.1</span> 5.1 A partir do modelo 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Start:  AIC=-150.62
+profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ano + ilha + especie
+
+                        Df Sum of Sq    RSS      AIC
+- ilha                   2     0.898 200.39 -153.130
+&lt;none&gt;                               199.49 -150.625
+- comprimento_bico       1     2.719 202.21 -148.116
+- ano                    1     4.207 203.70 -145.675
+- comprimento_nadadeira  1     5.698 205.19 -143.247
+- massa_corporal         1     5.706 205.19 -143.234
+- sexo                   1    24.977 224.47 -113.342
+- especie                2   190.548 390.04   68.646
+
+Step:  AIC=-153.13
+profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ano + especie
+
+                        Df Sum of Sq    RSS     AIC
+&lt;none&gt;                               200.39 -153.13
+- comprimento_bico       1     2.959 203.35 -150.25
+- ano                    1     4.181 204.57 -148.25
+- massa_corporal         1     5.731 206.12 -145.74
+- comprimento_nadadeira  1     5.825 206.21 -145.59
+- sexo                   1    24.644 225.03 -116.51
+- especie                2   237.085 437.47  102.86</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = profundidade_bico ~ comprimento_bico + massa_corporal + 
+    comprimento_nadadeira + sexo + ano + especie, data = pinguins)
+
+Coefficients:
+               (Intercept)            comprimento_bico  
+                 3.071e+02                   4.277e-02  
+            massa_corporal       comprimento_nadadeira  
+                 4.577e-04                   2.700e-02  
+                 sexomacho                         ano  
+                 8.562e-01                  -1.483e-01  
+especiePinguim-de-barbicha       especiePinguim-gentoo  
+                -5.340e-01                  -5.101e+00  </code></pre>
+</div>
+</div>
+<p>Pela seleção automática, a partir do modelo 1, observa-se que o melhor modelo seria o modelo 1. Porém, como observado anteriormente, este modelo possui problema de multicolinearidade e por isso, não deve ser considerado e a seleção automática não deve levar em consideração a variável <code>especie</code>. ## 5.2 A partir do modelo 2</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Start:  AIC=68.65
+profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
+    sexo + ano + ilha
+
+                        Df Sum of Sq    RSS     AIC
+- comprimento_bico       1     0.379 390.42  66.970
+- ano                    1     0.985 391.02  67.486
+&lt;none&gt;                               390.04  68.646
+- massa_corporal         1     9.506 399.54  74.665
+- comprimento_nadadeira  1    32.254 422.29  93.104
+- ilha                   2    47.435 437.47 102.865
+- sexo                   1   261.659 651.70 237.588
+
+Step:  AIC=66.97
+profundidade_bico ~ massa_corporal + comprimento_nadadeira + 
+    sexo + ano + ilha
+
+                        Df Sum of Sq    RSS     AIC
+- ano                    1     0.890 391.31  65.728
+&lt;none&gt;                               390.42  66.970
+- massa_corporal         1     9.362 399.78  72.861
+- comprimento_nadadeira  1    36.047 426.46  94.378
+- ilha                   2    51.639 442.05 104.336
+- sexo                   1   272.685 663.10 241.365
+
+Step:  AIC=65.73
+profundidade_bico ~ massa_corporal + comprimento_nadadeira + 
+    sexo + ilha
+
+                        Df Sum of Sq    RSS     AIC
+&lt;none&gt;                               391.31  65.728
+- massa_corporal         1    11.347 402.65  73.247
+- comprimento_nadadeira  1    35.720 427.03  92.817
+- ilha                   2    51.248 442.55 102.711
+- sexo                   1   276.474 667.78 241.706</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = profundidade_bico ~ massa_corporal + comprimento_nadadeira + 
+    sexo + ilha, data = pinguins)
+
+Coefficients:
+          (Intercept)         massa_corporal  comprimento_nadadeira  
+           27.9043913             -0.0005633             -0.0499521  
+            sexomacho              ilhaDream          ilhaTorgersen  
+            2.2176123              1.0626246              1.1179289  </code></pre>
+</div>
+</div>
+<p>Como pode ser observado, o modelo 4 foi o selecionado.</p>
+</section>
+</section>
+<section id="modelo-selecionado-modelo4" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 6 - Modelo selecionado (modelo4)</h1>
+<p>A partir das analises feitas até o momento e tendo como objetivo realizar previsões e as interpretá-las, como também verificar os pressupostos do Modelo de Regressão Linear Múltipla (MRLM) é o modelo 4.</p>
+<section id="verificando-os-pressupostos-do-mrlm" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="verificando-os-pressupostos-do-mrlm"><span class="header-section-number">6.1</span> 6.1 - Verificando os pressupostos do MRLM</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-19-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-19-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 
