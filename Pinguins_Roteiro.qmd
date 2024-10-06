@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
 ```
 
-# 1 - Introdução
+# Introdução
 
 Este relatório tem por objetivo ajustar um modelo de regressão linear múltiplo com o intuito de explorar a base de dados de `pinguins` para identificar determinadas características (medidas) associadas a 3 espécies de pinguins sobre a característica `profundidade do bico` (`“profundidade_bico”`).
 
@@ -34,7 +34,7 @@ Aqui estão fotos das espécies de pinguins:
 
 ![](Especies_de_Pinguins.jpg){#fig-especiespinguins}
 
-# 2 - Os dados
+# Os dados
 
 É possível baixar os dados da biblioteca `dados` do *R*. Apenas carregando a biblioteca, um data frame chamado `pinguins` fica disponibilizado e poderá ser usado imediatamente. Para a visualização das características dos dados utiliza-se o glimpse da biblioteca `dplyr`, que informa a quantidade de linhas, colunas e as variáveis. Para ter acesso faça os seguintes passos:
 
@@ -70,7 +70,7 @@ Visualizando rapidamente a estrutura da base de dados, observamos as seguintes v
 
 -   `ano`: número inteiro que indica o ano da coleta dos dados (2007, 2008 ou 2009).
 
-## 2.1 - Análise exploratória dos dados
+## Análise exploratória dos dados
 
 ```{r}
 
@@ -82,11 +82,7 @@ skim(dados)
 
 ```
 
-### 2.1.1 - Comentários:
-
-...
-
-### 2.1.2 - Editar:
+### Comentários (Editar):
 
 Através da visão geral resumida do dataframe é possível obter um resumo de várias estatísticas descritivas e informações sobre cada coluna do dataframe `dados` (`pinguins`).
 
@@ -120,11 +116,7 @@ ggsave("Grafico_dispersao_pinguins.jpeg")
 
 ```
 
-### Comentários
-
-...
-
-### Editar:
+### Comentários:
 
 Com relação à análise de correlação é algo desejável observar altas correlações das variáveis independentes com relação à variável dependente/resposta que no presente caso é `profundidade do bico` (`profundidade_bico`).
 
@@ -200,16 +192,18 @@ modelo1 <- lm(profundidade_bico ~ comprimento_bico + massa_corporal + compriment
 library(car) 
 
 vif(modelo1)
+
 ```
 
 Como pode-se observar, a variável especie possui um VIF de aproximadamente 45, por ser maior que 10, há um problema de multicolinearidade.
 
 
-# 3 - Modelos
+# Modelos
 
-## 3.1 - Modelo 1: Com todas as variáveis independentes.
+## Modelo 1: Com todas as variáveis independentes.
 
 Como vimos anteriormente, o modelo 1 se dá com todas as variáveis disponíveis. 
+
 ```{r} 
 
 summary(modelo1)
@@ -218,7 +212,7 @@ summary(modelo1)
 
 Ao observar os dados, percebe-se uma contradição no que se diz respeito as variáveis comprimento_bico, massa_corporal e comprimento_nadadeira, uma vez que os coeficientes de Pearson de cada são negativos, mas as estimativas dos mesmos são positivos. 
 
-## 3.2 - Modelo 2: Sem a variável espécie.
+## Modelo 2: Sem a variável espécie.
 
 Por a variável espécie possuir um VIF elevado, vamos montar nosso modelo 2 sem a mesma. 
 
@@ -235,7 +229,7 @@ Observando os dados, percebe-se que a variável `comprimento_bico` ainda continu
 Além da variável `comprimento_bico`, a variável `ano`apresenta um valor p > 0.1, alto o suficiente para não ser significante.
 
 
-## 3.3 - Modelo 3: Sem as variáveis especie e ano.
+## Modelo 3: Sem as variáveis especie e ano.
 
 Então, construimos um terceiro modelo, dessa vez retirando não só a variável `espécie`, mas também a variável `ano`. De início, não retiremos a `comprimento_bico` para analisar seu comportamento, como também das demais variáveis. 
 
@@ -245,9 +239,10 @@ modelo3 <- update(modelo2, ~ . -ano)
 
 summary(modelo3)
 ```
+
 O modelo 3 apresenta que a varriável `comprimento_bico` apesar de ter diminuido seu estimador, continua positivo contrariando o Coeficiente de Pearson, além do seu alto valor p.
 
-## 3.4 - Modelo 4: Sem as variáveis espécie, ano e comprimento_bico.
+## Modelo 4: Sem as variáveis espécie, ano e comprimento_bico.
 
 ```{r}
 modelo4 <- update(modelo3, ~. -comprimento_bico)
@@ -255,29 +250,33 @@ modelo4 <- update(modelo3, ~. -comprimento_bico)
 summary(modelo4)
 
 ```
+
 Este modelo 4 por sua vez apresenta coerência nos estimadores das variáveis analisadas na Análise Exploratória com seus respectivos Coeficientes de Pearson. Além do mais, ao observar o valor p, todas as variáveis apresentam significância.
 
 
-# 4 - Métodos para selecionar o melhor modelo.
+# Métodos para selecionar o melhor modelo.
 
 Por existir problema de multicolinearidade no modelo 1, ele não é considerado na seleção.
 
-## 4.1 - Medida AIC
+## Medida AIC
 
 A medida AIC determina que o melhor modelo é o que apresenta o menor valor.
 
 ```{r}
+
 AIC(modelo1)
 AIC(modelo2)
 AIC(modelo3)
 AIC(modelo4)
 
 ```
+
 Apesar de bem próximos e pela regra não há um indício significativo de real diferença, uma vez que a diferença entre os modelos não é maior que 10. O modelo 4 é preferível aos demais por ser o menor.
 
-## 4.2 - Medida BIC
+## Medida BIC
 
 Analogamente ao AIC, a medida BIC determina que o melhor modelo é aquele que apresentar menor valor.
+
 ```{r}
 BIC(modelo1)
 BIC(modelo2)
@@ -285,33 +284,38 @@ BIC(modelo3)
 BIC(modelo4)
 
 ```
+
 O modelo 4 apresenta uma diferença maior que 10 ao modelo 2, então há um indício de real diferença entre modelos. Embora essa diferença não ocorra entre os modelos 3 e 4, o modelo 4 é menor, e portanto, preferível.
 
 
-## 4.3 - Comparação de modelos encaixados (ANOVA)
+## Comparação de modelos encaixados (ANOVA)
+
 ```{r}
 anova(modelo1, modelo2)
 
 ```
+
 Observa-se que pelo teste F *deve rejeitar a hipótese nula* e com isso, a remoção da variável `especie` é significante para a regressão.
 
 
 ```{r}
+
 anova(modelo1, modelo3)
 
 ```
+
 Observa-se que pelo teste F *deve rejeitar a hipótese nula* e com isso, a remoção das variáveis `especie` e `ano` são significantes para a regressão.
 
-
 ```{r}
+
 anova(modelo1, modelo4)
 
 ```
+
 Observa-se que pelo teste F *deve rejeitar a hipótese nula* e com isso, a remoção das variáveis `especie`, `ano` e `comprimento_bico` são significantes para a regressão.
 
-
-
 ```{r}
+
 anova(modelo2, modelo3)
 
 ```
@@ -319,40 +323,50 @@ anova(modelo2, modelo3)
 Observa-se que pelo teste F não deve rejeitar a hipótese nula, logo a remoção da variável `ano` não melhora significamente.
 
 ```{r}
+
 anova(modelo2, modelo4)
+
 ```
 
 Observa-se que pelo teste F não deve rejeitar a hipótese nula, logo a remoção da variável `ano` e da `comprimento_bico` não melhora significamente.
 
-
 ```{r}
-anova(modelo3, modelo4)
-```
 
+anova(modelo3, modelo4)
+
+```
 
 Observa-se que pelo teste F não deve rejeitar a hipótese nula, logo a remoção da variável `comprimento_bico` não melhora significamente.
 
-# 5 - Seleção automática 
+# Seleção automática 
 
-## 5.1 A partir do modelo 1
-
+## A partir do modelo 1
 
 ```{r}
+
 step(modelo1)
 ```
+
 Pela seleção automática, a partir do modelo 1, observa-se que o melhor modelo seria o modelo 1. Porém, como observado anteriormente, este modelo possui problema de multicolinearidade e por isso, não deve ser considerado e a seleção automática não deve levar em consideração a variável `especie`.
-## 5.2 A partir do modelo 2
+
+## A partir do modelo 2
+
 ```{r}
+
 step(modelo2)
+
 ```
+
 Como pode ser observado, o modelo 4 foi o selecionado.
 
-# 6 - Modelo selecionado (modelo4)
+# Modelo selecionado (modelo4)
 
 A partir das analises feitas até o momento e tendo como objetivo realizar previsões e as interpretá-las, como também verificar os pressupostos do Modelo de Regressão Linear Múltipla (MRLM) é o modelo 4.
 
-## 6.1 - Verificando os pressupostos do MRLM
+## Verificando os pressupostos do MRLM
 
 ```{r}
+
 plot(modelo4)
+
 ```
