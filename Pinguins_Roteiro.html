@@ -142,7 +142,19 @@ window.Quarto = {
   </ul></li>
   <li><a href="#modelo-selecionado-modelo4" id="toc-modelo-selecionado-modelo4" class="nav-link" data-scroll-target="#modelo-selecionado-modelo4"><span class="header-section-number">6</span> Modelo selecionado (modelo4)</a>
   <ul class="collapse">
-  <li><a href="#verificando-os-pressupostos-do-mrlm" id="toc-verificando-os-pressupostos-do-mrlm" class="nav-link" data-scroll-target="#verificando-os-pressupostos-do-mrlm"><span class="header-section-number">6.1</span> Verificando os pressupostos do MRLM</a></li>
+  <li><a href="#verificando-os-pressupostos-do-mrlm" id="toc-verificando-os-pressupostos-do-mrlm" class="nav-link" data-scroll-target="#verificando-os-pressupostos-do-mrlm"><span class="header-section-number">6.1</span> Verificando os pressupostos do MRLM</a>
+  <ul class="collapse">
+  <li><a href="#análise-dos-pressupostos" id="toc-análise-dos-pressupostos" class="nav-link" data-scroll-target="#análise-dos-pressupostos"><span class="header-section-number">6.1.1</span> Análise dos pressupostos</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#interpretações-do-modelo-selecionado" id="toc-interpretações-do-modelo-selecionado" class="nav-link" data-scroll-target="#interpretações-do-modelo-selecionado"><span class="header-section-number">7</span> Interpretações do modelo selecionado</a>
+  <ul class="collapse">
+  <li><a href="#coeficientes-padronizados" id="toc-coeficientes-padronizados" class="nav-link" data-scroll-target="#coeficientes-padronizados"><span class="header-section-number">7.1</span> Coeficientes padronizados</a></li>
+  </ul></li>
+  <li><a href="#previsões" id="toc-previsões" class="nav-link" data-scroll-target="#previsões"><span class="header-section-number">8</span> Previsões</a>
+  <ul class="collapse">
+  <li><a href="#intervalo-de-confiança" id="toc-intervalo-de-confiança" class="nav-link" data-scroll-target="#intervalo-de-confiança"><span class="header-section-number">8.1</span> Intervalo de Confiança</a></li>
+  <li><a href="#intervalo-de-previsão" id="toc-intervalo-de-previsão" class="nav-link" data-scroll-target="#intervalo-de-previsão"><span class="header-section-number">8.2</span> Intervalo de Previsão</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -168,7 +180,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">6 de outubro de 2024</p>
+      <p class="date">7 de outubro de 2024</p>
     </div>
   </div>
   
@@ -195,7 +207,7 @@ window.Quarto = {
 <div id="fig-especiespinguins" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-especiespinguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Especies_de_Pinguins.jpg" id="fig-especiespinguins" class="img-fluid figure-img">
+<img src="especies_de_pinguins.png" id="fig-especiespinguins" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-especiespinguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1
@@ -240,8 +252,8 @@ Levels: Pinguim-de-adélia Pinguim-de-barbicha Pinguim-gentoo</code></pre>
 <ul>
 <li><p><code>especie</code>: espécies de pinguim (Pinguim-de-adélia, Pinguim-de-barbicha e Pinguim-gentoo);</p></li>
 <li><p><code>ilha</code>: ilha do Arquipélago Palmer na Antártida (Biscoe, Dream, Togersen);</p></li>
-<li><p><code>comprimento_bico</code>: número inteiro que indica o comprimento do bico (em milímetros);</p></li>
-<li><p><code>profundidade_bico</code>: número inteiro que indica a profundidade do bico (em milímetros);</p></li>
+<li><p><code>comprimento_bico</code>: número decimal que indica o comprimento do bico (em milímetros);</p></li>
+<li><p><code>profundidade_bico</code>: número decimal que indica a profundidade do bico (em milímetros);</p></li>
 <li><p><code>comprimento_nadadeira</code>: número inteiro que indica o comprimento da nadadeira (em milímetros);</p></li>
 <li><p><code>massa_corporal</code>: número inteiro que indica a massa corporal (em gramas);</p></li>
 <li><p><code>sexo</code>: fator que indica o sexo do(a) pinguim (macho, fêmea);</p></li>
@@ -715,19 +727,15 @@ F-statistic: 149.8 on 5 and 327 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2 data-number="4.1" class="anchored" data-anchor-id="medida-aic"><span class="header-section-number">4.1</span> Medida AIC</h2>
 <p>A medida AIC determina que o melhor modelo é o que apresenta o menor valor.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 796.3882</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1015.66</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1014.499</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1012.741</code></pre>
 </div>
@@ -738,19 +746,15 @@ F-statistic: 149.8 on 5 and 327 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2 data-number="4.2" class="anchored" data-anchor-id="medida-bic"><span class="header-section-number">4.2</span> Medida BIC</h2>
 <p>Analogamente ao AIC, a medida BIC determina que o melhor modelo é aquele que apresentar menor valor.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 838.2777</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1049.933</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1044.964</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1039.398</code></pre>
 </div>
@@ -760,58 +764,7 @@ F-statistic: 149.8 on 5 and 327 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="comparação-de-modelos-encaixados-anova" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="comparação-de-modelos-encaixados-anova"><span class="header-section-number">4.3</span> Comparação de modelos encaixados (ANOVA)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo1, modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Analysis of Variance Table
-
-Model 1: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
-    sexo + ano + ilha + especie
-Model 2: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
-    sexo + ano + ilha
-  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
-1    323 199.49                                  
-2    325 390.04 -2   -190.55 154.26 &lt; 2.2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-<p>Observa-se que pelo teste F <em>deve rejeitar a hipótese nula</em> e com isso, a remoção da variável <code>especie</code> é significante para a regressão.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo1, modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Analysis of Variance Table
-
-Model 1: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
-    sexo + ano + ilha + especie
-Model 2: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
-    sexo + ilha
-  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
-1    323 199.49                                  
-2    326 391.02 -3   -191.53 103.37 &lt; 2.2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-<p>Observa-se que pelo teste F <em>deve rejeitar a hipótese nula</em> e com isso, a remoção das variáveis <code>especie</code> e <code>ano</code> são significantes para a regressão.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo1, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Analysis of Variance Table
-
-Model 1: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
-    sexo + ano + ilha + especie
-Model 2: profundidade_bico ~ massa_corporal + comprimento_nadadeira + 
-    sexo + ilha
-  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
-1    323 199.49                                  
-2    327 391.31 -4   -191.82 77.645 &lt; 2.2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-<p>Observa-se que pelo teste F <em>deve rejeitar a hipótese nula</em> e com isso, a remoção das variáveis <code>especie</code>, <code>ano</code> e <code>comprimento_bico</code> são significantes para a regressão.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo2, modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo2, modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -826,7 +779,7 @@ Model 2: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nad
 </div>
 <p>Observa-se que pelo teste F não deve rejeitar a hipótese nula, logo a remoção da variável <code>ano</code> não melhora significamente.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo2, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo2, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -841,7 +794,7 @@ Model 2: profundidade_bico ~ massa_corporal + comprimento_nadadeira +
 </div>
 <p>Observa-se que pelo teste F não deve rejeitar a hipótese nula, logo a remoção da variável <code>ano</code> e da <code>comprimento_bico</code> não melhora significamente.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo3, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo3, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -862,7 +815,7 @@ Model 2: profundidade_bico ~ massa_corporal + comprimento_nadadeira +
 <section id="a-partir-do-modelo-1" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="a-partir-do-modelo-1"><span class="header-section-number">5.1</span> A partir do modelo 1</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Start:  AIC=-150.62
 profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
@@ -913,7 +866,7 @@ especiePinguim-de-barbicha       especiePinguim-gentoo
 <section id="a-partir-do-modelo-2" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="a-partir-do-modelo-2"><span class="header-section-number">5.2</span> A partir do modelo 2</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Start:  AIC=68.65
 profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
@@ -969,38 +922,168 @@ Coefficients:
 </section>
 <section id="modelo-selecionado-modelo4" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Modelo selecionado (modelo4)</h1>
-<p>A partir das analises feitas até o momento e tendo como objetivo realizar previsões e as interpretá-las, como também verificar os pressupostos do Modelo de Regressão Linear Múltipla (MRLM) é o modelo 4.</p>
+<p>A partir das analises feitas até o momento e tendo como objetivo realizar previsões e as interpretá-las, como também verificar os pressupostos do Modelo de Regressão Linear Múltipla (MRLM) o modelo selecionado é o modelo 4.</p>
 <section id="verificando-os-pressupostos-do-mrlm" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="verificando-os-pressupostos-do-mrlm"><span class="header-section-number">6.1</span> Verificando os pressupostos do MRLM</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-19-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-19-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-16-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+<section id="análise-dos-pressupostos" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="análise-dos-pressupostos"><span class="header-section-number">6.1.1</span> Análise dos pressupostos</h3>
+<ul>
+<li>Residuals x Fitted: Pode-se perceber que a linha vermelha não fere a homocedasticidade, uma vez que não apresenta uma inclinação significante, exibindo então, uma variância constante dos erros/resíduos.</li>
+<li>Q-Q Residuals: O gráfico apresenta que a grande maioria dos pontos segue distribuição normal, visto que os mesmosestão alinhados com a reta.</li>
+<li>Scale-Location: Apresenta uma leve inclinação crescente, porém não o suficiente para indicar heterocedasticidade.</li>
+<li>Residuals x Leverage: Pode-se observar que o ponto 115 é um outlier.</li>
+</ul>
+<p>O Leverage evidencia que o 115 é um outlier, porém ele esteve destacado dos demais nos outros três gráficos também. Então, uma possível abordagem futura seria retirar o ponto 115, já que ele é um outlier, e observar como os pontos se comportam.</p>
+</section>
+</section>
+</section>
+<section id="interpretações-do-modelo-selecionado" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Interpretações do modelo selecionado</h1>
+<p>Ajustamos um modelo linear (estimado utilizando Mínimos Quadrados Ordinários, OLS) para prever a profundidade do bico dos pinguins com base nas variáveis massa corporal, comprimento da nadadeira, sexo e ilha (fórmula: profundidade_bico ~ massa_corporal + comprimento_nadadeira + sexo + ilha). O modelo explica uma proporção significativa e substancial da variância observada (R² = 0,70, F(5, 327) = 149,78, p &lt; 0,001; R² ajustado = 0,69).</p>
+<ul>
+<li>Intercepto: O intercepto, que corresponde ao cenário em que massa_corporal = 0, comprimento_nadadeira = 0, sexo = fêmea e ilha = Biscoe, tem um valor estimado de 27,90 (IC 95% [25,24, 30,56], t(327) = 20,64, p &lt; 0,001). Isso significa que, para um pinguim fêmea da ilha Biscoe com massa corporal e comprimento da nadadeira nulos (cenário teórico), a profundidade média do bico seria de aproximadamente 27,90 mm.</li>
+<li>Massa Corporal: O efeito da massa corporal é estatisticamente significativo e negativo (beta = -0,000563, IC 95% [-0,000923, -0,000203], t(327) = -3,08, p = 0,002; beta padronizado = -0,23, IC 95% [-0,38, -0,08]). Em termos práticos, isso significa que, para cada aumento de 1 grama na massa corporal, a profundidade do bico diminui, em média, cerca de 0,000563 mm. O efeito é relativamente pequeno, mas estatisticamente significativo, sugerindo que pinguins mais pesados tendem a ter bicos ligeiramente menos profundos.</li>
+<li>Comprimento da Nadadeira: O efeito do comprimento da nadadeira também é estatisticamente significativo e negativo (beta = -0,05, IC 95% [-0,07, -0,03], t(327) = -5,46, p &lt; 0,001; beta padronizado = -0,36, IC 95% [-0,48, -0,23]). Para cada aumento de 1 mm no comprimento da nadadeira, a profundidade do bico diminui, em média, 0,05 mm. Esse efeito sugere que pinguins com nadadeiras mais longas tendem a ter bicos menos profundos.</li>
+<li>Sexo (Macho): O efeito do sexo, comparando machos a fêmeas, é positivo e estatisticamente significativo (beta = 2,22, IC 95% [1,93, 2,50], t(327) = 15,20, p &lt; 0,001; beta padronizado = 1,13, IC 95% [0,98, 1,27]). Isso significa que, em média, os pinguins machos têm bicos 2,22 mm mais profundos do que as fêmeas, controlando pelas outras variáveis. Este é um dos efeitos mais fortes no modelo, sugerindo que o sexo é um fator importante para prever a profundidade do bico.</li>
+<li>Ilha (Dream): O efeito de ser da ilha Dream, comparado a ser da ilha Biscoe, é positivo e estatisticamente significativo (beta = 1,06, IC 95% [0,72, 1,40], t(327) = 6,16, p &lt; 0,001; beta padronizado = 0,54, IC 95% [0,37, 0,71]). Isso indica que os pinguins da ilha Dream tendem a ter bicos, em média, 1,06 mm mais profundos do que os da ilha Biscoe.</li>
+<li>Ilha (Torgersen): O efeito de ser da ilha Torgersen, comparado a ser da ilha Biscoe, também é positivo e estatisticamente significativo (beta = 1,12, IC 95% [0,70, 1,54], t(327) = 5,22, p &lt; 0,001; beta padronizado = 0,57, IC 95% [0,35, 0,78]). Isso significa que os pinguins da ilha Torgersen tendem a ter bicos, em média, 1,12 mm mais profundos do que os da ilha Biscoe.</li>
+</ul>
+<p>O modelo mostra que as variáveis massa corporal, comprimento da nadadeira, sexo e ilha têm efeitos significativos na profundidade do bico dos pinguins. Pinguins mais pesados e com nadadeiras mais longas tendem a ter bicos menos profundos, enquanto os machos, e aqueles das ilhas Dream e Torgersen, têm bicos mais profundos. O sexo parece ser o fator mais relevante, seguido pela localização geográfica (ilha), enquanto as medidas físicas (massa corporal e comprimento da nadadeira) também contribuem, mas em menor grau.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(report)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">report</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>We fitted a linear model (estimated using OLS) to predict profundidade_bico
+with massa_corporal, comprimento_nadadeira, sexo and ilha (formula:
+profundidade_bico ~ massa_corporal + comprimento_nadadeira + sexo + ilha). The
+model explains a statistically significant and substantial proportion of
+variance (R2 = 0.70, F(5, 327) = 149.78, p &lt; .001, adj. R2 = 0.69). The model's
+intercept, corresponding to massa_corporal = 0, comprimento_nadadeira = 0, sexo
+= fêmea and ilha = Biscoe, is at 27.90 (95% CI [25.24, 30.56], t(327) = 20.64,
+p &lt; .001). Within this model:
+
+  - The effect of massa corporal is statistically significant and negative (beta
+= -5.63e-04, 95% CI [-9.23e-04, -2.03e-04], t(327) = -3.08, p = 0.002; Std.
+beta = -0.23, 95% CI [-0.38, -0.08])
+  - The effect of comprimento nadadeira is statistically significant and negative
+(beta = -0.05, 95% CI [-0.07, -0.03], t(327) = -5.46, p &lt; .001; Std. beta =
+-0.36, 95% CI [-0.48, -0.23])
+  - The effect of sexo [macho] is statistically significant and positive (beta =
+2.22, 95% CI [1.93, 2.50], t(327) = 15.20, p &lt; .001; Std. beta = 1.13, 95% CI
+[0.98, 1.27])
+  - The effect of ilha [Dream] is statistically significant and positive (beta =
+1.06, 95% CI [0.72, 1.40], t(327) = 6.16, p &lt; .001; Std. beta = 0.54, 95% CI
+[0.37, 0.71])
+  - The effect of ilha [Torgersen] is statistically significant and positive
+(beta = 1.12, 95% CI [0.70, 1.54], t(327) = 5.22, p &lt; .001; Std. beta = 0.57,
+95% CI [0.35, 0.78])
+
+Standardized parameters were obtained by fitting the model on a standardized
+version of the dataset. 95% Confidence Intervals (CIs) and p-values were
+computed using a Wald t-distribution approximation.</code></pre>
+</div>
+</div>
+<section id="coeficientes-padronizados" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="coeficientes-padronizados"><span class="header-section-number">7.1</span> Coeficientes padronizados</h2>
+<p>Para efeito de comparação dos coeficientes associados a cada variável independente e observação da importância das mesmas, torna-se necessário obter os <strong>coeficientes padronizados</strong>, principalmente quando as unidades de medida tem uma diferença considerável de magnitude.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#obtendo os coeficientes padronizados</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>lm.beta<span class="sc">::</span><span class="fu">lm.beta</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = profundidade_bico ~ massa_corporal + comprimento_nadadeira + 
+    sexo + ilha, data = pinguins)
+
+Standardized Coefficients::
+          (Intercept)        massa_corporal comprimento_nadadeira 
+                   NA            -0.2303366            -0.3555274 
+            sexomacho             ilhaDream         ilhaTorgersen 
+            0.5638887             0.2608274             0.1979508 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="previsões" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Previsões</h1>
+<p>Para uma boa previsão ser realizadas, os valores de cada variável independente deve estar dentro do seu respectivo intevalo observado, uma vez que valores fora desse intervalo, não seriam coerentes com o modelo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#obtendo os intervalos das variáveis </span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                especie           ilha     comprimento_bico profundidade_bico
+ Pinguim-de-adélia  :152   Biscoe   :168   Min.   :32.10    Min.   :13.10    
+ Pinguim-de-barbicha: 68   Dream    :124   1st Qu.:39.23    1st Qu.:15.60    
+ Pinguim-gentoo     :124   Torgersen: 52   Median :44.45    Median :17.30    
+                                           Mean   :43.92    Mean   :17.15    
+                                           3rd Qu.:48.50    3rd Qu.:18.70    
+                                           Max.   :59.60    Max.   :21.50    
+                                           NA's   :2        NA's   :2        
+ comprimento_nadadeira massa_corporal    sexo          ano      
+ Min.   :172.0         Min.   :2700   fêmea:165   Min.   :2007  
+ 1st Qu.:190.0         1st Qu.:3550   macho:168   1st Qu.:2007  
+ Median :197.0         Median :4050   NA's : 11   Median :2008  
+ Mean   :200.9         Mean   :4202               Mean   :2008  
+ 3rd Qu.:213.0         3rd Qu.:4750               3rd Qu.:2009  
+ Max.   :231.0         Max.   :6300               Max.   :2009  
+ NA's   :2             NA's   :2                                </code></pre>
+</div>
+</div>
+<p>Vamos então criar alguns dados fictícos dentro do intervalo de cada variável preditora baseado nos seus intervalos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>dados_previsoes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">comprimento_nadadeira =</span> <span class="fu">c</span>(<span class="fl">197.0</span>, <span class="fl">200.0</span>), <span class="at">massa_corporal =</span> <span class="fu">c</span>(<span class="fl">4202.0</span>, <span class="fl">4100.0</span>), <span class="at">sexo =</span> <span class="fu">c</span>(<span class="st">'macho'</span>, <span class="st">'fêmea'</span>), <span class="at">ilha =</span> <span class="fu">c</span>(<span class="st">'Biscoe'</span>, <span class="st">'Dream'</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="intervalo-de-confiança" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="intervalo-de-confiança"><span class="header-section-number">8.1</span> Intervalo de Confiança</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(modelo4, dados_previsoes, <span class="at">interval =</span> <span class="st">"confidence"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       fit      lwr      upr
+1 17.91440 17.63222 18.19658
+2 16.66702 16.38806 16.94597</code></pre>
+</div>
+</div>
+</section>
+<section id="intervalo-de-previsão" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="intervalo-de-previsão"><span class="header-section-number">8.2</span> Intervalo de Previsão</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(modelo4, dados_previsoes, <span class="at">interval =</span> <span class="st">"prediction"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       fit      lwr      upr
+1 17.91440 15.74398 20.08482
+2 16.66702 14.49701 18.83702</code></pre>
 </div>
 </div>
 </section>

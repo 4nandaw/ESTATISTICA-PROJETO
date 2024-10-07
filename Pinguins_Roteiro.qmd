@@ -32,7 +32,7 @@ Neste contexto, a regressão será realizada sobre a conhecida base de dados `Pi
 
 Aqui estão fotos das espécies de pinguins:
 
-![](Especies_de_Pinguins.jpg){#fig-especiespinguins}
+![](especies_de_pinguins.png){#fig-especiespinguins}
 
 # Os dados
 
@@ -58,9 +58,9 @@ Visualizando rapidamente a estrutura da base de dados, observamos as seguintes v
 
 -   `ilha`: ilha do Arquipélago Palmer na Antártida (Biscoe, Dream, Togersen);
 
--   `comprimento_bico`: número inteiro que indica o comprimento do bico (em milímetros);
+-   `comprimento_bico`: número decimal que indica o comprimento do bico (em milímetros);
 
--   `profundidade_bico`: número inteiro que indica a profundidade do bico (em milímetros);
+-   `profundidade_bico`: número decimal que indica a profundidade do bico (em milímetros);
 
 -   `comprimento_nadadeira`: número inteiro que indica o comprimento da nadadeira (em milímetros);
 
@@ -92,7 +92,7 @@ Através da visão geral resumida do dataframe é possível obter um resumo de v
 
 -   Valores Faltantes: Um resumo da quantidade de valores faltantes (NA) para cada coluna.
 
-##  Análise de correlação {#sec-GGally}
+## Análise de correlação {#sec-GGally}
 
 ```{r}
 
@@ -164,13 +164,11 @@ i)  apresenta correlação linear significativa com a variável *independente* `
 
 Como esta correlação, em valor absoluto é superior a 0.8 **há indício** para um posterior **problema de multicolinearidade**. Observa-se, ainda, que tal correlação é do tipo forte e positiva, ou seja, **as medidas** associadas aos **pinguins** se relacionam de forma **fortemente positiva**.
 
-
 ### Analisando o VIF
 
-O Fator de Inflação de Variância (VIF) é uma forma de identificar multicolinearidade. 
+O Fator de Inflação de Variância (VIF) é uma forma de identificar multicolinearidade.
 
 Para investigar mais sobre multicolinearidade, sugerimos a leitura do seguinte material: <https://www.statology.org/multicollinearity-regression/>
-
 
 O VIF é calculado da seguinte forma:
 
@@ -178,10 +176,7 @@ Para cada variável independente faz-se uma regressão linear dessa variável pa
 
 Com o $R^2$, o VIF = 1/(1 - $R^2$)
 
-Por convenção, um VIF > 10 indica um problema de multicolinearidade.
-
-
-
+Por convenção, um VIF \> 10 indica um problema de multicolinearidade.
 
 ```{r}
 
@@ -197,26 +192,25 @@ vif(modelo1)
 
 Como pode-se observar, a variável especie possui um VIF de aproximadamente 45, por ser maior que 10, há um problema de multicolinearidade.
 
-
 # Modelos
 
 ## Modelo 1: Com todas as variáveis independentes.
 
-Como vimos anteriormente, o modelo 1 se dá com todas as variáveis disponíveis. 
+Como vimos anteriormente, o modelo 1 se dá com todas as variáveis disponíveis.
 
-```{r} 
+```{r}
 
 summary(modelo1)
 
 ```
 
-Ao observar os dados, percebe-se uma contradição no que se diz respeito as variáveis comprimento_bico, massa_corporal e comprimento_nadadeira, uma vez que os coeficientes de Pearson de cada são negativos, mas as estimativas dos mesmos são positivos. 
+Ao observar os dados, percebe-se uma contradição no que se diz respeito as variáveis comprimento_bico, massa_corporal e comprimento_nadadeira, uma vez que os coeficientes de Pearson de cada são negativos, mas as estimativas dos mesmos são positivos.
 
 ## Modelo 2: Sem a variável espécie.
 
-Por a variável espécie possuir um VIF elevado, vamos montar nosso modelo 2 sem a mesma. 
+Por a variável espécie possuir um VIF elevado, vamos montar nosso modelo 2 sem a mesma.
 
-``` {r}
+```{r}
 
 modelo2 <- update(modelo1, ~ . -especie)
 
@@ -226,12 +220,11 @@ summary(modelo2)
 
 Observando os dados, percebe-se que a variável `comprimento_bico` ainda continua contraditória, uma vez que sua estimativa é positiva e o Coeficiente de Pearson negativa. Ademais, o seu valor p é de aproximadamente 0.57, ou seja, não é significativo.
 
-Além da variável `comprimento_bico`, a variável `ano`apresenta um valor p > 0.1, alto o suficiente para não ser significante.
-
+Além da variável `comprimento_bico`, a variável `ano`apresenta um valor p \> 0.1, alto o suficiente para não ser significante.
 
 ## Modelo 3: Sem as variáveis especie e ano.
 
-Então, construimos um terceiro modelo, dessa vez retirando não só a variável `espécie`, mas também a variável `ano`. De início, não retiremos a `comprimento_bico` para analisar seu comportamento, como também das demais variáveis. 
+Então, construimos um terceiro modelo, dessa vez retirando não só a variável `espécie`, mas também a variável `ano`. De início, não retiremos a `comprimento_bico` para analisar seu comportamento, como também das demais variáveis.
 
 ```{r}
 
@@ -253,7 +246,6 @@ summary(modelo4)
 
 Este modelo 4 por sua vez apresenta coerência nos estimadores das variáveis analisadas na Análise Exploratória com seus respectivos Coeficientes de Pearson. Além do mais, ao observar o valor p, todas as variáveis apresentam significância.
 
-
 # Métodos para selecionar o melhor modelo.
 
 Por existir problema de multicolinearidade no modelo 1, ele não é considerado na seleção.
@@ -264,7 +256,7 @@ A medida AIC determina que o melhor modelo é o que apresenta o menor valor.
 
 ```{r}
 
-AIC(modelo1)
+
 AIC(modelo2)
 AIC(modelo3)
 AIC(modelo4)
@@ -278,7 +270,7 @@ Apesar de bem próximos e pela regra não há um indício significativo de real 
 Analogamente ao AIC, a medida BIC determina que o melhor modelo é aquele que apresentar menor valor.
 
 ```{r}
-BIC(modelo1)
+
 BIC(modelo2)
 BIC(modelo3)
 BIC(modelo4)
@@ -287,32 +279,7 @@ BIC(modelo4)
 
 O modelo 4 apresenta uma diferença maior que 10 ao modelo 2, então há um indício de real diferença entre modelos. Embora essa diferença não ocorra entre os modelos 3 e 4, o modelo 4 é menor, e portanto, preferível.
 
-
 ## Comparação de modelos encaixados (ANOVA)
-
-```{r}
-anova(modelo1, modelo2)
-
-```
-
-Observa-se que pelo teste F *deve rejeitar a hipótese nula* e com isso, a remoção da variável `especie` é significante para a regressão.
-
-
-```{r}
-
-anova(modelo1, modelo3)
-
-```
-
-Observa-se que pelo teste F *deve rejeitar a hipótese nula* e com isso, a remoção das variáveis `especie` e `ano` são significantes para a regressão.
-
-```{r}
-
-anova(modelo1, modelo4)
-
-```
-
-Observa-se que pelo teste F *deve rejeitar a hipótese nula* e com isso, a remoção das variáveis `especie`, `ano` e `comprimento_bico` são significantes para a regressão.
 
 ```{r}
 
@@ -338,7 +305,7 @@ anova(modelo3, modelo4)
 
 Observa-se que pelo teste F não deve rejeitar a hipótese nula, logo a remoção da variável `comprimento_bico` não melhora significamente.
 
-# Seleção automática 
+# Seleção automática
 
 ## A partir do modelo 1
 
@@ -361,7 +328,7 @@ Como pode ser observado, o modelo 4 foi o selecionado.
 
 # Modelo selecionado (modelo4)
 
-A partir das analises feitas até o momento e tendo como objetivo realizar previsões e as interpretá-las, como também verificar os pressupostos do Modelo de Regressão Linear Múltipla (MRLM) é o modelo 4.
+A partir das analises feitas até o momento e tendo como objetivo realizar previsões e as interpretá-las, como também verificar os pressupostos do Modelo de Regressão Linear Múltipla (MRLM) o modelo selecionado é o modelo 4.
 
 ## Verificando os pressupostos do MRLM
 
@@ -369,4 +336,73 @@ A partir das analises feitas até o momento e tendo como objetivo realizar previ
 
 plot(modelo4)
 
+
+```
+
+### Análise dos pressupostos
+
+-   Residuals x Fitted: Pode-se perceber que a linha vermelha não fere a homocedasticidade, uma vez que não apresenta uma inclinação significante, exibindo então, uma variância constante dos erros/resíduos.
+-   Q-Q Residuals: O gráfico apresenta que a grande maioria dos pontos segue distribuição normal, visto que os mesmosestão alinhados com a reta.
+-   Scale-Location: Apresenta uma leve inclinação crescente, porém não o suficiente para indicar heterocedasticidade.
+-   Residuals x Leverage: Pode-se observar que o ponto 115 é um outlier.
+
+O Leverage evidencia que o 115 é um outlier, porém ele esteve destacado dos demais nos outros três gráficos também. Então, uma possível abordagem futura seria retirar o ponto 115, já que ele é um outlier, e observar como os pontos se comportam.
+
+# Interpretações do modelo selecionado
+
+Ajustamos um modelo linear (estimado utilizando Mínimos Quadrados Ordinários, OLS) para prever a profundidade do bico dos pinguins com base nas variáveis massa corporal, comprimento da nadadeira, sexo e ilha (fórmula: profundidade_bico \~ massa_corporal + comprimento_nadadeira + sexo + ilha). O modelo explica uma proporção significativa e substancial da variância observada (R² = 0,70, F(5, 327) = 149,78, p \< 0,001; R² ajustado = 0,69).
+
+-   Intercepto: O intercepto, que corresponde ao cenário em que massa_corporal = 0, comprimento_nadadeira = 0, sexo = fêmea e ilha = Biscoe, tem um valor estimado de 27,90 (IC 95% \[25,24, 30,56\], t(327) = 20,64, p \< 0,001). Isso significa que, para um pinguim fêmea da ilha Biscoe com massa corporal e comprimento da nadadeira nulos (cenário teórico), a profundidade média do bico seria de aproximadamente 27,90 mm.
+-   Massa Corporal: O efeito da massa corporal é estatisticamente significativo e negativo (beta = -0,000563, IC 95% \[-0,000923, -0,000203\], t(327) = -3,08, p = 0,002; beta padronizado = -0,23, IC 95% \[-0,38, -0,08\]). Em termos práticos, isso significa que, para cada aumento de 1 grama na massa corporal, a profundidade do bico diminui, em média, cerca de 0,000563 mm. O efeito é relativamente pequeno, mas estatisticamente significativo, sugerindo que pinguins mais pesados tendem a ter bicos ligeiramente menos profundos.
+-   Comprimento da Nadadeira: O efeito do comprimento da nadadeira também é estatisticamente significativo e negativo (beta = -0,05, IC 95% \[-0,07, -0,03\], t(327) = -5,46, p \< 0,001; beta padronizado = -0,36, IC 95% \[-0,48, -0,23\]). Para cada aumento de 1 mm no comprimento da nadadeira, a profundidade do bico diminui, em média, 0,05 mm. Esse efeito sugere que pinguins com nadadeiras mais longas tendem a ter bicos menos profundos.
+-   Sexo (Macho): O efeito do sexo, comparando machos a fêmeas, é positivo e estatisticamente significativo (beta = 2,22, IC 95% \[1,93, 2,50\], t(327) = 15,20, p \< 0,001; beta padronizado = 1,13, IC 95% \[0,98, 1,27\]). Isso significa que, em média, os pinguins machos têm bicos 2,22 mm mais profundos do que as fêmeas, controlando pelas outras variáveis. Este é um dos efeitos mais fortes no modelo, sugerindo que o sexo é um fator importante para prever a profundidade do bico.
+-   Ilha (Dream): O efeito de ser da ilha Dream, comparado a ser da ilha Biscoe, é positivo e estatisticamente significativo (beta = 1,06, IC 95% \[0,72, 1,40\], t(327) = 6,16, p \< 0,001; beta padronizado = 0,54, IC 95% \[0,37, 0,71\]). Isso indica que os pinguins da ilha Dream tendem a ter bicos, em média, 1,06 mm mais profundos do que os da ilha Biscoe.
+-   Ilha (Torgersen): O efeito de ser da ilha Torgersen, comparado a ser da ilha Biscoe, também é positivo e estatisticamente significativo (beta = 1,12, IC 95% \[0,70, 1,54\], t(327) = 5,22, p \< 0,001; beta padronizado = 0,57, IC 95% \[0,35, 0,78\]). Isso significa que os pinguins da ilha Torgersen tendem a ter bicos, em média, 1,12 mm mais profundos do que os da ilha Biscoe.
+
+O modelo mostra que as variáveis massa corporal, comprimento da nadadeira, sexo e ilha têm efeitos significativos na profundidade do bico dos pinguins. Pinguins mais pesados e com nadadeiras mais longas tendem a ter bicos menos profundos, enquanto os machos, e aqueles das ilhas Dream e Torgersen, têm bicos mais profundos. O sexo parece ser o fator mais relevante, seguido pela localização geográfica (ilha), enquanto as medidas físicas (massa corporal e comprimento da nadadeira) também contribuem, mas em menor grau.
+
+```{r}
+
+library(report)
+
+report(modelo4)
+
+```
+
+## Coeficientes padronizados
+
+Para efeito de comparação dos coeficientes associados a cada variável independente e observação da importância das mesmas, torna-se necessário obter os **coeficientes padronizados**, principalmente quando as unidades de medida tem uma diferença considerável de magnitude.
+
+```{r}
+
+#obtendo os coeficientes padronizados
+lm.beta::lm.beta(modelo4)
+
+```
+
+# Previsões
+
+Para uma boa previsão ser realizadas, os valores de cada variável independente deve estar dentro do seu respectivo intevalo observado, uma vez que valores fora desse intervalo, não seriam coerentes com o modelo.
+
+```{r}
+#obtendo os intervalos das variáveis 
+summary(dados)
+```
+
+Vamos então criar alguns dados fictícos dentro do intervalo de cada variável preditora baseado nos seus intervalos.
+
+```{r}
+dados_previsoes <- data.frame(comprimento_nadadeira = c(197.0, 200.0), massa_corporal = c(4202.0, 4100.0), sexo = c('macho', 'fêmea'), ilha = c('Biscoe', 'Dream'))
+```
+
+## Intervalo de Confiança
+
+```{r}
+predict(modelo4, dados_previsoes, interval = "confidence")
+```
+
+## Intervalo de Previsão
+
+```{r}
+predict(modelo4, dados_previsoes, interval = "prediction")
 ```
