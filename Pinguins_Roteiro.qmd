@@ -82,17 +82,93 @@ skim(dados)
 
 ```
 
-### Comentários (Editar):
 
-Através da visão geral resumida do dataframe é possível obter um resumo de várias estatísticas descritivas e informações sobre cada coluna do dataframe `dados` (`pinguins`).
+Através da visão geral resumida do dataframe gerada pela biblioteca `skimr` é possível obter um resumo de várias estatísticas descritivas e informações sobre cada coluna do dataframe `dados` (`pinguins`).
+
+Pode-se observar que esse conjunto de dados possui 344 linhas e 8 colunas, sendo 3 categóricas e 5 numéricas.
 
 -   Resumo das Colunas: cada coluna do dataframe é listada com seu nome e o tipo de dado de cada coluna é mostrado.
 
--   Estatísticas Descritivas: número de valores (n), média, mediana, mínimo, máximo, desvio padrão e outros quantis (percentis).
+-   Estatísticas Descritivas: incluem o número de valores (n), média, mediana, mínimo, máximo, desvio padrão e outros quantis (percentis).
 
--   Valores Faltantes: Um resumo da quantidade de valores faltantes (NA) para cada coluna.
+-   Valores Faltantes: um resumo da quantidade de valores faltantes (NA) para cada coluna.
+
+-   Análise de percentil: indica que a maioria dos valores está entre intervalos esperados.
+
+-   Distribuição das variáveis numéricas: sugere que os dados estão podem ser utilizados em análises mais profundas, uma vez que aparentam estar razoáveis e consistentes.
+
+## Análise de outliers
+
+````{r}
+boxplot(dados$profundidade_bico,
+        main = "Boxplot profundidade do bico",
+        ylab = "profundidade_bico",
+        col = "lightblue",
+        border = "darkblue",
+        outline = TRUE)
+````
+
+
+````{r}
+boxplot(dados$comprimento_bico,
+        main = "Boxplot comprimento do bico",
+        ylab = "comprimento_bico",
+        col = "lightblue",
+        border = "darkblue",
+        outline = TRUE)
+````
+
+````{r}
+boxplot(dados$comprimento_nadadeira,
+        main = "Boxplot comprimento da nadadeira",
+        ylab = "comprimento_nadadeira",
+        col = "lightblue",
+        border = "darkblue",
+        outline = TRUE)
+````
+
+````{r}
+boxplot(dados$massa_corporal,
+        main = "Boxplot massa corporal",
+        ylab = "massa_corporal",
+        col = "lightblue",
+        border = "darkblue",
+        outline = TRUE)
+````
+
+Após análise dos boxplot das variáveis, verifica-se que não existem outliers (pontos que ficam fora dos limites dos gráficos). Dessa forma, é possível concluir que os dados estão bem distribuidos dentro do intervalo esperado, com dados bem comportados e sem variabilidade extrema e/ou valores que podem distorcer a análise estatística.
 
 ## Análise de correlação {#sec-GGally}
+
+```{r}
+  plot(profundidade_bico ~ comprimento_nadadeira, 
+       data = dados, 
+       main = "Profundidade do bico por comprimento da nadadeira", 
+       xlab = "comprimento_nadadeira", ylab = "profundidade_bico")
+```
+
+  Analisando o gráfico, pode-se concluir que o coeficiente de correlação linear *r* será negativo, já que quando o comprimento da nadadeira é maior a profundidade do bico é menor e quando o comprimento da nadadeira é menor a profundidade do bico é maior, sendo inversamente proporcional
+
+
+```{r}
+  plot(profundidade_bico ~ comprimento_bico, 
+       data = dados, 
+       main = "Profundidade do bico por comprimento do bico", 
+       xlab = "comprimento_bico", ylab = "profundidade_bico")
+```
+
+  No gráfico acima não é possível identificar relações entre as variáveis.
+
+
+```{r}
+  plot(profundidade_bico ~ massa_corporal, 
+       data = dados, 
+       main = "Profundidade do bico por comprimento do bico", 
+       xlab = "massa_corporal", ylab = "profundidade_bico")
+```
+
+  Já no gráfico acima observa-se que quanto maior a massa corporal menor a profundidade do bico e quanto menor a massa corporal maior a profundidade do bico, sendo também inversamente proporcional com correlação linear negativa.
+
 
 ```{r}
 
@@ -397,12 +473,78 @@ dados_previsoes <- data.frame(comprimento_nadadeira = c(197.0, 200.0), massa_cor
 
 ## Intervalo de Confiança
 
+O intervalo de confiança (confidence interval) indica a faixa onde se espera que a média das previsões esteja, dado o modelo ajustado.
+
 ```{r}
 predict(modelo4, dados_previsoes, interval = "confidence")
 ```
 
+Para o primeiro conjunto de características (comprimento_nadadeira = 197.0, massa_corporal = 4202.0, sexo = macho, ilha = Biscoe):
+-   O valor previsto (fit) é 17.91440.
+-   O intervalo de confiança vai de 17.63222 a 18.19658, ou seja, estamos 95% confiantes de que a média da profundidade do bico para um grupo de pinguins com essas características está dentro desse intervalo..
+
+Para o segundo conjunto de características (comprimento_nadadeira = 200.0, massa_corporal = 4100.0, sexo = fêmea, ilha = Dream):
+-   O valor previsto (fit) é 16.66702.
+-   O intervalo de confiança vai de 16.38806 a 16.94597, indicando que a média prevista para essa combinação de características está nesse intervalo.
+
 ## Intervalo de Previsão
+
+O intervalo de previsão (prediction interval) é mais largo, pois indica onde se espera que valores individuais de novas observações possam cair, considerando a incerteza do modelo e a variabilidade dos dados.
 
 ```{r}
 predict(modelo4, dados_previsoes, interval = "prediction")
 ```
+
+Para o primeiro conjunto de características (comprimento_nadadeira = 197.0, massa_corporal = 4202.0, sexo = macho, ilha = Biscoe):
+-   O valor previsto (fit) é 17.91440, mas o intervalo de previsão vai de 15.74398 a 20.08482, o que reflete a incerteza sobre onde exatamente a profundidade do bico de um pinguim individual com essas características pode estar.
+
+Para o segundo conjunto de características (comprimento_nadadeira = 200.0, massa_corporal = 4100.0, sexo = fêmea, ilha = Dream):
+-   O valor previsto (fit) é 16.66702, e o intervalo de previsão vai de 14.49701 a 18.83702, ou seja, a profundidade do bico para um pinguim individual pode cair em qualquer ponto dentro dessa faixa.
+
+
+## Observações
+
+  O intervalo de confiança é mais estreito e reflete a incerteza na média prevista para pinguins com essas características, enquanto o intervalo de previsão é mais amplo, pois reflete a incerteza nos valores individuais de profundidade do bico.
+  
+  Esses intervalos indicam que, para previsões individuais, você deve sempre considerar o intervalo de previsão, pois o intervalo de confiança seria muito estreito, aumentando o risco de não conter o valor real para um indivíduo específico.
+
+# `Profundidade_bico` vs `Especie`
+
+## Visualizações gráficas
+
+```{r}
+
+g1 <- ggplot(dados, aes(x=especie, y=profundidade_bico)) +
+  geom_boxplot(fill="blue", alpha=0.4) +
+  theme_classic()
+
+g1
+
+```
+
+```{r}
+g1 + geom_jitter()
+```
+
+```{r}
+
+g2 <- ggplot(dados, aes(x=especie, y=profundidade_bico)) +
+  geom_violin(fill="blue", alpha=0.4) +
+  theme_classic()
+
+g2
+
+```
+
+```{r}
+
+g3 <- ggplot(dados, aes(x=profundidade_bico, fill=especie)) +
+  geom_density(stat = "density", alpha=0.6) +
+  theme_classic()
+
+g3
+
+```
+
+**Interpretações**:
+

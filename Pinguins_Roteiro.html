@@ -112,14 +112,12 @@ window.Quarto = {
   <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">1</span> Introdução</a></li>
   <li><a href="#os-dados" id="toc-os-dados" class="nav-link" data-scroll-target="#os-dados"><span class="header-section-number">2</span> Os dados</a>
   <ul class="collapse">
-  <li><a href="#análise-exploratória-dos-dados" id="toc-análise-exploratória-dos-dados" class="nav-link" data-scroll-target="#análise-exploratória-dos-dados"><span class="header-section-number">2.1</span> Análise exploratória dos dados</a>
+  <li><a href="#análise-exploratória-dos-dados" id="toc-análise-exploratória-dos-dados" class="nav-link" data-scroll-target="#análise-exploratória-dos-dados"><span class="header-section-number">2.1</span> Análise exploratória dos dados</a></li>
+  <li><a href="#análise-de-outliers" id="toc-análise-de-outliers" class="nav-link" data-scroll-target="#análise-de-outliers"><span class="header-section-number">2.2</span> Análise de outliers</a></li>
+  <li><a href="#sec-GGally" id="toc-sec-GGally" class="nav-link" data-scroll-target="#sec-GGally"><span class="header-section-number">2.3</span> Análise de correlação</a>
   <ul class="collapse">
-  <li><a href="#comentários-editar" id="toc-comentários-editar" class="nav-link" data-scroll-target="#comentários-editar"><span class="header-section-number">2.1.1</span> Comentários (Editar):</a></li>
-  </ul></li>
-  <li><a href="#sec-GGally" id="toc-sec-GGally" class="nav-link" data-scroll-target="#sec-GGally"><span class="header-section-number">2.2</span> Análise de correlação</a>
-  <ul class="collapse">
-  <li><a href="#comentários" id="toc-comentários" class="nav-link" data-scroll-target="#comentários"><span class="header-section-number">2.2.1</span> Comentários:</a></li>
-  <li><a href="#analisando-o-vif" id="toc-analisando-o-vif" class="nav-link" data-scroll-target="#analisando-o-vif"><span class="header-section-number">2.2.2</span> Analisando o VIF</a></li>
+  <li><a href="#comentários" id="toc-comentários" class="nav-link" data-scroll-target="#comentários"><span class="header-section-number">2.3.1</span> Comentários:</a></li>
+  <li><a href="#analisando-o-vif" id="toc-analisando-o-vif" class="nav-link" data-scroll-target="#analisando-o-vif"><span class="header-section-number">2.3.2</span> Analisando o VIF</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#modelos" id="toc-modelos" class="nav-link" data-scroll-target="#modelos"><span class="header-section-number">3</span> Modelos</a>
@@ -155,6 +153,11 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#intervalo-de-confiança" id="toc-intervalo-de-confiança" class="nav-link" data-scroll-target="#intervalo-de-confiança"><span class="header-section-number">8.1</span> Intervalo de Confiança</a></li>
   <li><a href="#intervalo-de-previsão" id="toc-intervalo-de-previsão" class="nav-link" data-scroll-target="#intervalo-de-previsão"><span class="header-section-number">8.2</span> Intervalo de Previsão</a></li>
+  <li><a href="#observações" id="toc-observações" class="nav-link" data-scroll-target="#observações"><span class="header-section-number">8.3</span> Observações</a></li>
+  </ul></li>
+  <li><a href="#profundidade_bico-vs-especie" id="toc-profundidade_bico-vs-especie" class="nav-link" data-scroll-target="#profundidade_bico-vs-especie"><span class="header-section-number">9</span> <code>Profundidade_bico</code> vs <code>Especie</code></a>
+  <ul class="collapse">
+  <li><a href="#visualizações-gráficas" id="toc-visualizações-gráficas" class="nav-link" data-scroll-target="#visualizações-gráficas"><span class="header-section-number">9.1</span> Visualizações gráficas</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -456,33 +459,25 @@ Levels: Pinguim-de-adélia Pinguim-de-barbicha Pinguim-gentoo</code></pre>
 </table>
 </div>
 </div>
-<section id="comentários-editar" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="comentários-editar"><span class="header-section-number">2.1.1</span> Comentários (Editar):</h3>
-<p>Através da visão geral resumida do dataframe é possível obter um resumo de várias estatísticas descritivas e informações sobre cada coluna do dataframe <code>dados</code> (<code>pinguins</code>).</p>
+<p>Através da visão geral resumida do dataframe gerada pela biblioteca <code>skimr</code> é possível obter um resumo de várias estatísticas descritivas e informações sobre cada coluna do dataframe <code>dados</code> (<code>pinguins</code>).</p>
+<p>Pode-se observar que esse conjunto de dados possui 344 linhas e 8 colunas, sendo 3 categóricas e 5 numéricas.</p>
 <ul>
 <li><p>Resumo das Colunas: cada coluna do dataframe é listada com seu nome e o tipo de dado de cada coluna é mostrado.</p></li>
-<li><p>Estatísticas Descritivas: número de valores (n), média, mediana, mínimo, máximo, desvio padrão e outros quantis (percentis).</p></li>
-<li><p>Valores Faltantes: Um resumo da quantidade de valores faltantes (NA) para cada coluna.</p></li>
+<li><p>Estatísticas Descritivas: incluem o número de valores (n), média, mediana, mínimo, máximo, desvio padrão e outros quantis (percentis).</p></li>
+<li><p>Valores Faltantes: um resumo da quantidade de valores faltantes (NA) para cada coluna.</p></li>
+<li><p>Análise de percentil: indica que a maioria dos valores está entre intervalos esperados.</p></li>
+<li><p>Distribuição das variáveis numéricas: sugere que os dados estão podem ser utilizados em análises mais profundas, uma vez que aparentam estar razoáveis e consistentes.</p></li>
 </ul>
 </section>
-</section>
-<section id="sec-GGally" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="sec-GGally"><span class="header-section-number">2.2</span> Análise de correlação</h2>
+<section id="análise-de-outliers" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="análise-de-outliers"><span class="header-section-number">2.2</span> Análise de outliers</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)  <span class="co"># Pacote para função ggpairs</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># Pacote para salvar gráficos</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Multicolinearidade: r &gt; 0.9 (ou 0.8)</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>graf1 <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(pinguins, <span class="at">columns =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>, ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">colour =</span> especie))  <span class="sc">+</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),  <span class="co"># Aumenta o texto no eixo X</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),  <span class="co"># Aumenta o texto no eixo Y</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),   <span class="co"># Aumenta os rótulos das facetas</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    )   </span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>graf1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(dados<span class="sc">$</span>profundidade_bico,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot profundidade do bico"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"profundidade_bico"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"darkblue"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">outline =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -490,11 +485,125 @@ Levels: Pinguim-de-adélia Pinguim-de-barbicha Pinguim-gentoo</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando o gráfico em .jpeg</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"Grafico_dispersao_pinguins.jpeg"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="comentários" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="comentários"><span class="header-section-number">2.2.1</span> Comentários:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(dados<span class="sc">$</span>comprimento_bico,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot comprimento do bico"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"comprimento_bico"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"darkblue"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">outline =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(dados<span class="sc">$</span>comprimento_nadadeira,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot comprimento da nadadeira"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"comprimento_nadadeira"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"darkblue"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">outline =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(dados<span class="sc">$</span>massa_corporal,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot massa corporal"</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"massa_corporal"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"darkblue"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">outline =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Após análise dos boxplot das variáveis, verifica-se que não existem outliers (pontos que ficam fora dos limites dos gráficos). Dessa forma, é possível concluir que os dados estão bem distribuidos dentro do intervalo esperado, com dados bem comportados e sem variabilidade extrema e/ou valores que podem distorcer a análise estatística.</p>
+</section>
+<section id="sec-GGally" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-GGally"><span class="header-section-number">2.3</span> Análise de correlação</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(profundidade_bico <span class="sc">~</span> comprimento_nadadeira, </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> dados, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Profundidade do bico por comprimento da nadadeira"</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"comprimento_nadadeira"</span>, <span class="at">ylab =</span> <span class="st">"profundidade_bico"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Analisando o gráfico, pode-se concluir que o coeficiente de correlação linear <em>r</em> será negativo, já que quando o comprimento da nadadeira é maior a profundidade do bico é menor e quando o comprimento da nadadeira é menor a profundidade do bico é maior, sendo inversamente proporcional</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(profundidade_bico <span class="sc">~</span> comprimento_bico, </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> dados, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Profundidade do bico por comprimento do bico"</span>, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"comprimento_bico"</span>, <span class="at">ylab =</span> <span class="st">"profundidade_bico"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>No gráfico acima não é possível identificar relações entre as variáveis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(profundidade_bico <span class="sc">~</span> massa_corporal, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> dados, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Profundidade do bico por comprimento do bico"</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"massa_corporal"</span>, <span class="at">ylab =</span> <span class="st">"profundidade_bico"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Já no gráfico acima observa-se que quanto maior a massa corporal menor a profundidade do bico e quanto menor a massa corporal maior a profundidade do bico, sendo também inversamente proporcional com correlação linear negativa.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)  <span class="co"># Pacote para função ggpairs</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># Pacote para salvar gráficos</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Multicolinearidade: r &gt; 0.9 (ou 0.8)</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>graf1 <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(pinguins, <span class="at">columns =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>, ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">colour =</span> especie))  <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),  <span class="co"># Aumenta o texto no eixo X</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),  <span class="co"># Aumenta o texto no eixo Y</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),   <span class="co"># Aumenta os rótulos das facetas</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    )   </span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>graf1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando o gráfico em .jpeg</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"Grafico_dispersao_pinguins.jpeg"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="comentários" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="comentários"><span class="header-section-number">2.3.1</span> Comentários:</h3>
 <p>Com relação à análise de correlação é algo desejável observar altas correlações das variáveis independentes com relação à variável dependente/resposta que no presente caso é <code>profundidade do bico</code> (<code>profundidade_bico</code>).</p>
 <p>Por outro lado, altas correlações entre as demais variáveis a serem utilizadas como variáveis independentes/preditoras nos dá indícios de que haverá <strong>problemas de multicolinearidade</strong> ao ajustar o MRLM. <strong>Como regra geral</strong> isto ocorre quando há <strong>correlações</strong> <span class="math inline">\(\geq 0.9\)</span> ou <span class="math inline">\(\geq 0.8\)</span> <strong>entre</strong> as <strong>variáveis preditoras</strong>.</p>
 <p>Dito isto, é possível observar que:</p>
@@ -537,8 +646,8 @@ Levels: Pinguim-de-adélia Pinguim-de-barbicha Pinguim-gentoo</code></pre>
 <!-- -->
 <p>Como esta correlação, em valor absoluto é superior a 0.8 <strong>há indício</strong> para um posterior <strong>problema de multicolinearidade</strong>. Observa-se, ainda, que tal correlação é do tipo forte e positiva, ou seja, <strong>as medidas</strong> associadas aos <strong>pinguins</strong> se relacionam de forma <strong>fortemente positiva</strong>.</p>
 </section>
-<section id="analisando-o-vif" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="analisando-o-vif"><span class="header-section-number">2.2.2</span> Analisando o VIF</h3>
+<section id="analisando-o-vif" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="analisando-o-vif"><span class="header-section-number">2.3.2</span> Analisando o VIF</h3>
 <p>O Fator de Inflação de Variância (VIF) é uma forma de identificar multicolinearidade.</p>
 <p>Para investigar mais sobre multicolinearidade, sugerimos a leitura do seguinte material: <a href="https://www.statology.org/multicollinearity-regression/" class="uri">https://www.statology.org/multicollinearity-regression/</a></p>
 <p>O VIF é calculado da seguinte forma:</p>
@@ -546,13 +655,13 @@ Levels: Pinguim-de-adélia Pinguim-de-barbicha Pinguim-gentoo</code></pre>
 <p>Com o <span class="math inline">\(R^2\)</span>, o VIF = 1/(1 - <span class="math inline">\(R^2\)</span>)</p>
 <p>Por convenção, um VIF &gt; 10 indica um problema de multicolinearidade.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Modelo inicial com todas as variáveis</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>modelo1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(profundidade_bico <span class="sc">~</span> comprimento_bico <span class="sc">+</span> massa_corporal <span class="sc">+</span> comprimento_nadadeira <span class="sc">+</span> sexo <span class="sc">+</span> ano <span class="sc">+</span> ilha <span class="sc">+</span> especie, <span class="at">data =</span> pinguins)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Modelo inicial com todas as variáveis</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>modelo1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(profundidade_bico <span class="sc">~</span> comprimento_bico <span class="sc">+</span> massa_corporal <span class="sc">+</span> comprimento_nadadeira <span class="sc">+</span> sexo <span class="sc">+</span> ano <span class="sc">+</span> ilha <span class="sc">+</span> especie, <span class="at">data =</span> pinguins)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                           GVIF Df GVIF^(1/(2*Df))
 comprimento_bico       6.167650  1        2.483475
@@ -574,7 +683,7 @@ especie               45.302557  2        2.594363</code></pre>
 <h2 data-number="3.1" class="anchored" data-anchor-id="modelo-1-com-todas-as-variáveis-independentes."><span class="header-section-number">3.1</span> Modelo 1: Com todas as variáveis independentes.</h2>
 <p>Como vimos anteriormente, o modelo 1 se dá com todas as variáveis disponíveis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -612,9 +721,9 @@ F-statistic: 195.7 on 9 and 323 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2 data-number="3.2" class="anchored" data-anchor-id="modelo-2-sem-a-variável-espécie."><span class="header-section-number">3.2</span> Modelo 2: Sem a variável espécie.</h2>
 <p>Por a variável espécie possuir um VIF elevado, vamos montar nosso modelo 2 sem a mesma.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>modelo2 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo1, <span class="sc">~</span> . <span class="sc">-</span>especie)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>modelo2 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo1, <span class="sc">~</span> . <span class="sc">-</span>especie)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -651,9 +760,9 @@ F-statistic: 106.8 on 7 and 325 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2 data-number="3.3" class="anchored" data-anchor-id="modelo-3-sem-as-variáveis-especie-e-ano."><span class="header-section-number">3.3</span> Modelo 3: Sem as variáveis especie e ano.</h2>
 <p>Então, construimos um terceiro modelo, dessa vez retirando não só a variável <code>espécie</code>, mas também a variável <code>ano</code>. De início, não retiremos a <code>comprimento_bico</code> para analisar seu comportamento, como também das demais variáveis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>modelo3 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo2, <span class="sc">~</span> . <span class="sc">-</span>ano)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>modelo3 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo2, <span class="sc">~</span> . <span class="sc">-</span>ano)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -687,9 +796,9 @@ F-statistic: 124.6 on 6 and 326 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="modelo-4-sem-as-variáveis-espécie-ano-e-comprimento_bico." class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="modelo-4-sem-as-variáveis-espécie-ano-e-comprimento_bico."><span class="header-section-number">3.4</span> Modelo 4: Sem as variáveis espécie, ano e comprimento_bico.</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>modelo4 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, <span class="sc">~</span>. <span class="sc">-</span>comprimento_bico)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>modelo4 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, <span class="sc">~</span>. <span class="sc">-</span>comprimento_bico)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -727,15 +836,15 @@ F-statistic: 149.8 on 5 and 327 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2 data-number="4.1" class="anchored" data-anchor-id="medida-aic"><span class="header-section-number">4.1</span> Medida AIC</h2>
 <p>A medida AIC determina que o melhor modelo é o que apresenta o menor valor.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1015.66</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1014.499</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1012.741</code></pre>
 </div>
@@ -746,15 +855,15 @@ F-statistic: 149.8 on 5 and 327 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2 data-number="4.2" class="anchored" data-anchor-id="medida-bic"><span class="header-section-number">4.2</span> Medida BIC</h2>
 <p>Analogamente ao AIC, a medida BIC determina que o melhor modelo é aquele que apresentar menor valor.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1049.933</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1044.964</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1039.398</code></pre>
 </div>
@@ -764,7 +873,7 @@ F-statistic: 149.8 on 5 and 327 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="comparação-de-modelos-encaixados-anova" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="comparação-de-modelos-encaixados-anova"><span class="header-section-number">4.3</span> Comparação de modelos encaixados (ANOVA)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo2, modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo2, modelo3)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -779,7 +888,7 @@ Model 2: profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nad
 </div>
 <p>Observa-se que pelo teste F não deve rejeitar a hipótese nula, logo a remoção da variável <code>ano</code> não melhora significamente.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo2, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo2, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -794,7 +903,7 @@ Model 2: profundidade_bico ~ massa_corporal + comprimento_nadadeira +
 </div>
 <p>Observa-se que pelo teste F não deve rejeitar a hipótese nula, logo a remoção da variável <code>ano</code> e da <code>comprimento_bico</code> não melhora significamente.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo3, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo3, modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -815,7 +924,7 @@ Model 2: profundidade_bico ~ massa_corporal + comprimento_nadadeira +
 <section id="a-partir-do-modelo-1" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="a-partir-do-modelo-1"><span class="header-section-number">5.1</span> A partir do modelo 1</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(modelo1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Start:  AIC=-150.62
 profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
@@ -866,7 +975,7 @@ especiePinguim-de-barbicha       especiePinguim-gentoo
 <section id="a-partir-do-modelo-2" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="a-partir-do-modelo-2"><span class="header-section-number">5.2</span> A partir do modelo 2</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(modelo2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Start:  AIC=68.65
 profundidade_bico ~ comprimento_bico + massa_corporal + comprimento_nadadeira + 
@@ -926,32 +1035,32 @@ Coefficients:
 <section id="verificando-os-pressupostos-do-mrlm" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="verificando-os-pressupostos-do-mrlm"><span class="header-section-number">6.1</span> Verificando os pressupostos do MRLM</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-23-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-23-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-16-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-23-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -981,9 +1090,9 @@ Coefficients:
 </ul>
 <p>O modelo mostra que as variáveis massa corporal, comprimento da nadadeira, sexo e ilha têm efeitos significativos na profundidade do bico dos pinguins. Pinguins mais pesados e com nadadeiras mais longas tendem a ter bicos menos profundos, enquanto os machos, e aqueles das ilhas Dream e Torgersen, têm bicos mais profundos. O sexo parece ser o fator mais relevante, seguido pela localização geográfica (ilha), enquanto as medidas físicas (massa corporal e comprimento da nadadeira) também contribuem, mas em menor grau.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(report)</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">report</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(report)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">report</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>We fitted a linear model (estimated using OLS) to predict profundidade_bico
 with massa_corporal, comprimento_nadadeira, sexo and ilha (formula:
@@ -1019,8 +1128,8 @@ computed using a Wald t-distribution approximation.</code></pre>
 <h2 data-number="7.1" class="anchored" data-anchor-id="coeficientes-padronizados"><span class="header-section-number">7.1</span> Coeficientes padronizados</h2>
 <p>Para efeito de comparação dos coeficientes associados a cada variável independente e observação da importância das mesmas, torna-se necessário obter os <strong>coeficientes padronizados</strong>, principalmente quando as unidades de medida tem uma diferença considerável de magnitude.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#obtendo os coeficientes padronizados</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>lm.beta<span class="sc">::</span><span class="fu">lm.beta</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">#obtendo os coeficientes padronizados</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>lm.beta<span class="sc">::</span><span class="fu">lm.beta</span>(modelo4)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1040,8 +1149,8 @@ Standardized Coefficients::
 <h1 data-number="8"><span class="header-section-number">8</span> Previsões</h1>
 <p>Para uma boa previsão ser realizadas, os valores de cada variável independente deve estar dentro do seu respectivo intevalo observado, uma vez que valores fora desse intervalo, não seriam coerentes com o modelo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#obtendo os intervalos das variáveis </span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#obtendo os intervalos das variáveis </span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                especie           ilha     comprimento_bico profundidade_bico
  Pinguim-de-adélia  :152   Biscoe   :168   Min.   :32.10    Min.   :13.10    
@@ -1063,29 +1172,99 @@ Standardized Coefficients::
 </div>
 <p>Vamos então criar alguns dados fictícos dentro do intervalo de cada variável preditora baseado nos seus intervalos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>dados_previsoes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">comprimento_nadadeira =</span> <span class="fu">c</span>(<span class="fl">197.0</span>, <span class="fl">200.0</span>), <span class="at">massa_corporal =</span> <span class="fu">c</span>(<span class="fl">4202.0</span>, <span class="fl">4100.0</span>), <span class="at">sexo =</span> <span class="fu">c</span>(<span class="st">'macho'</span>, <span class="st">'fêmea'</span>), <span class="at">ilha =</span> <span class="fu">c</span>(<span class="st">'Biscoe'</span>, <span class="st">'Dream'</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>dados_previsoes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">comprimento_nadadeira =</span> <span class="fu">c</span>(<span class="fl">197.0</span>, <span class="fl">200.0</span>), <span class="at">massa_corporal =</span> <span class="fu">c</span>(<span class="fl">4202.0</span>, <span class="fl">4100.0</span>), <span class="at">sexo =</span> <span class="fu">c</span>(<span class="st">'macho'</span>, <span class="st">'fêmea'</span>), <span class="at">ilha =</span> <span class="fu">c</span>(<span class="st">'Biscoe'</span>, <span class="st">'Dream'</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="intervalo-de-confiança" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="intervalo-de-confiança"><span class="header-section-number">8.1</span> Intervalo de Confiança</h2>
+<p>O intervalo de confiança (confidence interval) indica a faixa onde se espera que a média das previsões esteja, dado o modelo ajustado.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(modelo4, dados_previsoes, <span class="at">interval =</span> <span class="st">"confidence"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(modelo4, dados_previsoes, <span class="at">interval =</span> <span class="st">"confidence"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       fit      lwr      upr
 1 17.91440 17.63222 18.19658
 2 16.66702 16.38806 16.94597</code></pre>
 </div>
 </div>
+<p>Para o primeiro conjunto de características (comprimento_nadadeira = 197.0, massa_corporal = 4202.0, sexo = macho, ilha = Biscoe): - O valor previsto (fit) é 17.91440. - O intervalo de confiança vai de 17.63222 a 18.19658, ou seja, estamos 95% confiantes de que a média da profundidade do bico para um grupo de pinguins com essas características está dentro desse intervalo..</p>
+<p>Para o segundo conjunto de características (comprimento_nadadeira = 200.0, massa_corporal = 4100.0, sexo = fêmea, ilha = Dream): - O valor previsto (fit) é 16.66702. - O intervalo de confiança vai de 16.38806 a 16.94597, indicando que a média prevista para essa combinação de características está nesse intervalo.</p>
 </section>
 <section id="intervalo-de-previsão" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="intervalo-de-previsão"><span class="header-section-number">8.2</span> Intervalo de Previsão</h2>
+<p>O intervalo de previsão (prediction interval) é mais largo, pois indica onde se espera que valores individuais de novas observações possam cair, considerando a incerteza do modelo e a variabilidade dos dados.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(modelo4, dados_previsoes, <span class="at">interval =</span> <span class="st">"prediction"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(modelo4, dados_previsoes, <span class="at">interval =</span> <span class="st">"prediction"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       fit      lwr      upr
 1 17.91440 15.74398 20.08482
 2 16.66702 14.49701 18.83702</code></pre>
 </div>
 </div>
+<p>Para o primeiro conjunto de características (comprimento_nadadeira = 197.0, massa_corporal = 4202.0, sexo = macho, ilha = Biscoe): - O valor previsto (fit) é 17.91440, mas o intervalo de previsão vai de 15.74398 a 20.08482, o que reflete a incerteza sobre onde exatamente a profundidade do bico de um pinguim individual com essas características pode estar.</p>
+<p>Para o segundo conjunto de características (comprimento_nadadeira = 200.0, massa_corporal = 4100.0, sexo = fêmea, ilha = Dream): - O valor previsto (fit) é 16.66702, e o intervalo de previsão vai de 14.49701 a 18.83702, ou seja, a profundidade do bico para um pinguim individual pode cair em qualquer ponto dentro dessa faixa.</p>
+</section>
+<section id="observações" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="observações"><span class="header-section-number">8.3</span> Observações</h2>
+<p>O intervalo de confiança é mais estreito e reflete a incerteza na média prevista para pinguins com essas características, enquanto o intervalo de previsão é mais amplo, pois reflete a incerteza nos valores individuais de profundidade do bico.</p>
+<p>Esses intervalos indicam que, para previsões individuais, você deve sempre considerar o intervalo de previsão, pois o intervalo de confiança seria muito estreito, aumentando o risco de não conter o valor real para um indivíduo específico.</p>
+</section>
+</section>
+<section id="profundidade_bico-vs-especie" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> <code>Profundidade_bico</code> vs <code>Especie</code></h1>
+<section id="visualizações-gráficas" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="visualizações-gráficas"><span class="header-section-number">9.1</span> Visualizações gráficas</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x=</span>especie, <span class="at">y=</span>profundidade_bico)) <span class="sc">+</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">"blue"</span>, <span class="at">alpha=</span><span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>g1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>g1 <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x=</span>especie, <span class="at">y=</span>profundidade_bico)) <span class="sc">+</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">fill=</span><span class="st">"blue"</span>, <span class="at">alpha=</span><span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>g2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x=</span>profundidade_bico, <span class="at">fill=</span>especie)) <span class="sc">+</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">stat =</span> <span class="st">"density"</span>, <span class="at">alpha=</span><span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>g3</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Pinguins_Roteiro_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretações</strong>:</p>
 </section>
 </section>
 
