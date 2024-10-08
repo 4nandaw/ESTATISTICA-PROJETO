@@ -82,7 +82,6 @@ skim(dados)
 
 ```
 
-
 Através da visão geral resumida do dataframe gerada pela biblioteca `skimr` é possível obter um resumo de várias estatísticas descritivas e informações sobre cada coluna do dataframe `dados` (`pinguins`).
 
 Pode-se observar que esse conjunto de dados possui 344 linhas e 8 colunas, sendo 3 categóricas e 5 numéricas.
@@ -99,42 +98,41 @@ Pode-se observar que esse conjunto de dados possui 344 linhas e 8 colunas, sendo
 
 ## Análise de outliers
 
-````{r}
+```{r}
 boxplot(dados$profundidade_bico,
         main = "Boxplot profundidade do bico",
         ylab = "profundidade_bico",
         col = "lightblue",
         border = "darkblue",
         outline = TRUE)
-````
+```
 
-
-````{r}
+```{r}
 boxplot(dados$comprimento_bico,
         main = "Boxplot comprimento do bico",
         ylab = "comprimento_bico",
         col = "lightblue",
         border = "darkblue",
         outline = TRUE)
-````
+```
 
-````{r}
+```{r}
 boxplot(dados$comprimento_nadadeira,
         main = "Boxplot comprimento da nadadeira",
         ylab = "comprimento_nadadeira",
         col = "lightblue",
         border = "darkblue",
         outline = TRUE)
-````
+```
 
-````{r}
+```{r}
 boxplot(dados$massa_corporal,
         main = "Boxplot massa corporal",
         ylab = "massa_corporal",
         col = "lightblue",
         border = "darkblue",
         outline = TRUE)
-````
+```
 
 Após análise dos boxplot das variáveis, verifica-se que não existem outliers (pontos que ficam fora dos limites dos gráficos). Dessa forma, é possível concluir que os dados estão bem distribuidos dentro do intervalo esperado, com dados bem comportados e sem variabilidade extrema e/ou valores que podem distorcer a análise estatística.
 
@@ -147,8 +145,7 @@ Após análise dos boxplot das variáveis, verifica-se que não existem outliers
        xlab = "comprimento_nadadeira", ylab = "profundidade_bico")
 ```
 
-  Analisando o gráfico, pode-se concluir que o coeficiente de correlação linear *r* será negativo, já que quando o comprimento da nadadeira é maior a profundidade do bico é menor e quando o comprimento da nadadeira é menor a profundidade do bico é maior, sendo inversamente proporcional
-
+Analisando o gráfico, pode-se concluir que o coeficiente de correlação linear *r* será negativo, já que quando o comprimento da nadadeira é maior a profundidade do bico é menor e quando o comprimento da nadadeira é menor a profundidade do bico é maior, sendo inversamente proporcional
 
 ```{r}
   plot(profundidade_bico ~ comprimento_bico, 
@@ -157,8 +154,7 @@ Após análise dos boxplot das variáveis, verifica-se que não existem outliers
        xlab = "comprimento_bico", ylab = "profundidade_bico")
 ```
 
-  No gráfico acima não é possível identificar relações entre as variáveis.
-
+No gráfico acima não é possível identificar relações entre as variáveis.
 
 ```{r}
   plot(profundidade_bico ~ massa_corporal, 
@@ -167,8 +163,9 @@ Após análise dos boxplot das variáveis, verifica-se que não existem outliers
        xlab = "massa_corporal", ylab = "profundidade_bico")
 ```
 
-  Já no gráfico acima observa-se que quanto maior a massa corporal menor a profundidade do bico e quanto menor a massa corporal maior a profundidade do bico, sendo também inversamente proporcional com correlação linear negativa.
+Já no gráfico acima observa-se que quanto maior a massa corporal menor a profundidade do bico e quanto menor a massa corporal maior a profundidade do bico, sendo também inversamente proporcional com correlação linear negativa.
 
+Partimos então para uma análise de correlação das variáveis quantitativas
 
 ```{r}
 
@@ -179,9 +176,9 @@ library(ggplot2) # Pacote para salvar gráficos
 
 graf1 <- ggpairs(pinguins, columns = 3:6, ggplot2::aes(colour = especie))  +
   theme(
-    axis.text.x = element_text(size = 8),  # Aumenta o texto no eixo X
-    axis.text.y = element_text(size = 8),  # Aumenta o texto no eixo Y
-    strip.text = element_text(size = 6),   # Aumenta os rótulos das facetas
+    axis.text.x = element_text(size = 8),  # diminui o texto no eixo X
+    axis.text.y = element_text(size = 8),  # diminui o texto no eixo Y
+    strip.text = element_text(size = 6),   # diminui os rótulos das facetas
     legend.text = element_text(size = 8)
     )   
 
@@ -298,6 +295,8 @@ Observando os dados, percebe-se que a variável `comprimento_bico` ainda continu
 
 Além da variável `comprimento_bico`, a variável `ano`apresenta um valor p \> 0.1, alto o suficiente para não ser significante.
 
+Vale ressaltar que o R ajustado desse modelo é de 0.6905, então 69,05% das variações de `profundidade_bico`\` estão sendo explicadas pelo modelo.
+
 ## Modelo 3: Sem as variáveis especie e ano.
 
 Então, construimos um terceiro modelo, dessa vez retirando não só a variável `espécie`, mas também a variável `ano`. De início, não retiremos a `comprimento_bico` para analisar seu comportamento, como também das demais variáveis.
@@ -311,6 +310,8 @@ summary(modelo3)
 
 O modelo 3 apresenta que a varriável `comprimento_bico` apesar de ter diminuido seu estimador, continua positivo contrariando o Coeficiente de Pearson, além do seu alto valor p.
 
+O R ajustado é de 0.6907, então 69,07% das variações de `profundidade_bico`estão sendo explicadas pelo modelo, apesar de mínimo, houve um aumento em relação com o anterior.
+
 ## Modelo 4: Sem as variáveis espécie, ano e comprimento_bico.
 
 ```{r}
@@ -321,6 +322,10 @@ summary(modelo4)
 ```
 
 Este modelo 4 por sua vez apresenta coerência nos estimadores das variáveis analisadas na Análise Exploratória com seus respectivos Coeficientes de Pearson. Além do mais, ao observar o valor p, todas as variáveis apresentam significância.
+
+Observa-se que o R ajustado é de 0.6914, ou seja, o 69,14% das variáções de \`profundidade_bico\` estão sendo explicadas pelo modelo.
+
+É importante destacar que o R ajustado do modelo 4 em relação aos outros modelos aumentou minimamente, porém ainda continua sendo o modelo, dos que não possuem problema de multicolinearidade, que mais explica `profundidade_bico`\`.
 
 # Métodos para selecionar o melhor modelo.
 
@@ -467,84 +472,68 @@ summary(dados)
 
 Vamos então criar alguns dados fictícos dentro do intervalo de cada variável preditora baseado nos seus intervalos.
 
+Para então fazer tanto o intervalo de confiança, quanto o intervalo de predição, iremos simular dois pinguins baseados no resumo obtido ds dados. São eles:
+
+Pinguim 1:
+
+-   Comprimento de nadadeira: 200.9 mm
+
+-   Massa corporal: 4202 g
+
+-   Sexo: Macho
+
+-   Ilha: Biscoe
+
+Pinguim 2:
+
+-   Comprimento de nadadeira: 200 mm
+
+-   Massa corporal: 4100g
+
+-   Sexo: Fêmea
+
+-   Ilha: Dream
+
+Antes de prosseguir, perceba que o pinguim 1 obtém dados de cada variável preditora que é exatamente a média obtida das mesmas dos dados que estamos observando
+
 ```{r}
-dados_previsoes <- data.frame(comprimento_nadadeira = c(197.0, 200.0), massa_corporal = c(4202.0, 4100.0), sexo = c('macho', 'fêmea'), ilha = c('Biscoe', 'Dream'))
+dados_previsoes <- data.frame(comprimento_nadadeira = c(200.9, 200.0), massa_corporal = c(4202.0, 4100.0), sexo = c('macho', 'fêmea'), ilha = c('Biscoe', 'Dream'))
 ```
 
 ## Intervalo de Confiança
 
-O intervalo de confiança (confidence interval) indica a faixa onde se espera que a média das previsões esteja, dado o modelo ajustado.
+O intervalo de confiança indica a faixa onde se espera que a média das previsões esteja, dado o modelo ajustado.
 
 ```{r}
 predict(modelo4, dados_previsoes, interval = "confidence")
 ```
 
-Para o primeiro conjunto de características (comprimento_nadadeira = 197.0, massa_corporal = 4202.0, sexo = macho, ilha = Biscoe):
--   O valor previsto (fit) é 17.91440.
--   O intervalo de confiança vai de 17.63222 a 18.19658, ou seja, estamos 95% confiantes de que a média da profundidade do bico para um grupo de pinguins com essas características está dentro desse intervalo..
+Para o pinguim 1, o valor previsto (fit) é de 17.71959 O intervalo de confiança vai de 17.44051 a 17.99867, ou seja, estamos 95% confiantes de que a média da profundidade do bico para um grupo de pinguins com essas características está dentro desse intervalo. É interessante notar que a média de `profundidade_bico` não está contida nesse intervalo.
 
-Para o segundo conjunto de características (comprimento_nadadeira = 200.0, massa_corporal = 4100.0, sexo = fêmea, ilha = Dream):
--   O valor previsto (fit) é 16.66702.
--   O intervalo de confiança vai de 16.38806 a 16.94597, indicando que a média prevista para essa combinação de características está nesse intervalo.
+Para o segundo pinguim, o valor previsto (fit) é de 16.66702. O intervalo de confiança vai de 16.38806 a 16.94597, indicando que a média prevista para essa combinação de características está nesse intervalo, com 95% de confiança.
+
+### Interpretações
+
+O fato de o pinguim 1 ter valores das variáveis preditoras sendo exatamente a média de cada variável dos dados e o intervalo de confiança feito a partir dele e do modelo não conterem a média de `profundidade_bico`\`, embora por muito pouco, demonstra que o modelo não explica totalmente os dados, podendo cometer erros, mesmo que mínimos. O que já é esperado uma vez que o modelo explica aproximadamente 70% dos dados.
 
 ## Intervalo de Previsão
 
-O intervalo de previsão (prediction interval) é mais largo, pois indica onde se espera que valores individuais de novas observações possam cair, considerando a incerteza do modelo e a variabilidade dos dados.
+O intervalo de previsão é mais largo, pois indica onde se espera que valores individuais de novas observações possam cair, considerando a incerteza do modelo e a variabilidade dos dados.
 
 ```{r}
 predict(modelo4, dados_previsoes, interval = "prediction")
 ```
 
-Para o primeiro conjunto de características (comprimento_nadadeira = 197.0, massa_corporal = 4202.0, sexo = macho, ilha = Biscoe):
--   O valor previsto (fit) é 17.91440, mas o intervalo de previsão vai de 15.74398 a 20.08482, o que reflete a incerteza sobre onde exatamente a profundidade do bico de um pinguim individual com essas características pode estar.
+Para o primeiro o pinguim 1, o valor previsto (fit) é 17.71959, mas o intervalo de previsão vai de 15.54957 a 19.88961, o que reflete a incerteza sobre onde exatamente a profundidade do bico de um pinguim individual com essas características pode estar.
 
-Para o segundo conjunto de características (comprimento_nadadeira = 200.0, massa_corporal = 4100.0, sexo = fêmea, ilha = Dream):
--   O valor previsto (fit) é 16.66702, e o intervalo de previsão vai de 14.49701 a 18.83702, ou seja, a profundidade do bico para um pinguim individual pode cair em qualquer ponto dentro dessa faixa.
+Para o segundo pinguim, o valor previsto (fit) é 16.66702, e o intervalo de previsão vai de 14.49701 a 18.83702, ou seja, a profundidade do bico para um pinguim individual pode cair em qualquer ponto dentro dessa faixa.
 
+### Interpretações
 
-## Observações
+O intervalo de previsão demonstra uma variedade dos valores de `profundidade_bico`, já que é mais amplo e indica a incerteza de onde o valor de `profundidade_bico` irá estar.
 
-  O intervalo de confiança é mais estreito e reflete a incerteza na média prevista para pinguins com essas características, enquanto o intervalo de previsão é mais amplo, pois reflete a incerteza nos valores individuais de profundidade do bico.
-  
-  Esses intervalos indicam que, para previsões individuais, você deve sempre considerar o intervalo de previsão, pois o intervalo de confiança seria muito estreito, aumentando o risco de não conter o valor real para um indivíduo específico.
+# Conclusão
 
-# `Profundidade_bico` vs `Especie`
+O modelo não demonstra violações no Modelo de Relação Linear Múltiplo (MRLM) e apresenta boa taxa de explicabilidade da variável dependente, uma vez que o R ajustado é de cerca de 70%.
 
-## Visualizações gráficas
-
-```{r}
-
-g1 <- ggplot(dados, aes(x=especie, y=profundidade_bico)) +
-  geom_boxplot(fill="blue", alpha=0.4) +
-  theme_classic()
-
-g1
-
-```
-
-```{r}
-g1 + geom_jitter()
-```
-
-```{r}
-
-g2 <- ggplot(dados, aes(x=especie, y=profundidade_bico)) +
-  geom_violin(fill="blue", alpha=0.4) +
-  theme_classic()
-
-g2
-
-```
-
-```{r}
-
-g3 <- ggplot(dados, aes(x=profundidade_bico, fill=especie)) +
-  geom_density(stat = "density", alpha=0.6) +
-  theme_classic()
-
-g3
-
-```
-
-**Interpretações**:
-
+Apesar disso, o modelo pode cometer erros, mesmo que mínimos. Tais erros podem ocorrer por diversos fatores, inclusive por falta de dados suficientes para uma melhora significativa do modelo.
