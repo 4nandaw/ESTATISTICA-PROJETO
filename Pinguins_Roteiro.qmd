@@ -33,6 +33,7 @@ Neste contexto, a regressão será realizada sobre a conhecida base de dados `Pi
 Aqui estão fotos das espécies de pinguins:
 
 ![](especies_de_pinguins.png){#fig-especiespinguins}
+<br/>
 
 # Os dados
 
@@ -344,7 +345,7 @@ AIC(modelo4)
 
 ```
 
-Apesar de bem próximos e pela regra não há um indício significativo de real diferença, uma vez que a diferença entre os modelos não é maior que 10. O modelo 4 é preferível aos demais por ser o menor.
+Apesar de bem próximos e pela regra não há um indício significativo de real diferença, uma vez que a diferença entre os modelos não é maior que 10. O modelo 4 ainda é preferível aos demais por ser o menor.
 
 ## Medida BIC
 
@@ -423,7 +424,7 @@ plot(modelo4)
 ### Análise dos pressupostos
 
 -   Residuals x Fitted: Pode-se perceber que a linha vermelha não fere a homocedasticidade, uma vez que não apresenta uma inclinação significante, exibindo então, uma variância constante dos erros/resíduos.
--   Q-Q Residuals: O gráfico apresenta que a grande maioria dos pontos segue distribuição normal, visto que os mesmosestão alinhados com a reta.
+-   Q-Q Residuals: O gráfico apresenta que a grande maioria dos pontos segue distribuição normal, visto que os mesmos estão alinhados com a reta.
 -   Scale-Location: Apresenta uma leve inclinação crescente, porém não o suficiente para indicar heterocedasticidade.
 -   Residuals x Leverage: Pode-se observar que o ponto 115 é um outlier.
 
@@ -534,6 +535,6 @@ O intervalo de previsão demonstra uma variedade dos valores de `profundidade_bi
 
 # Conclusão
 
-O modelo não demonstra violações no Modelo de Relação Linear Múltiplo (MRLM) e apresenta boa taxa de explicabilidade da variável dependente, uma vez que o R ajustado é de cerca de 70%.
+O modelo ajustado não apresenta violações dos pressupostos do Modelo de Regressão Linear Múltipla (MRLM) e exibe uma boa capacidade explicativa da variável dependente, com um R ajustado em torno de 70%. Isso reflete uma boa capacidade de explicação da variabilidade da variável dependente pelas variáveis preditoras incluídas no modelo, o que sugere que ele está bem calibrado para os dados analisados.
 
-Apesar disso, o modelo pode cometer erros, mesmo que mínimos. Tais erros podem ocorrer por diversos fatores, inclusive por falta de dados suficientes para uma melhora significativa do modelo.
+Contudo, é importante ressaltar que o modelo ainda está sujeito a erros, mesmo que mínimos. Esses erros podem decorrer de diversos fatores, como a presença de variáveis preditoras não incluídas que poderiam melhorar a precisão ou a ausência de um volume de dados suficiente para capturar plenamente a complexidade do fenômeno em análise. Além disso, a qualidade e representatividade dos dados disponíveis podem impactar o desempenho do modelo, limitando seu potencial de generalização para novos conjuntos de dados ou cenários diferentes. Assim, uma coleta mais ampla de dados ou a inclusão de novas variáveis relevantes poderiam contribuir para refinar o modelo e melhorar sua precisão preditiva.

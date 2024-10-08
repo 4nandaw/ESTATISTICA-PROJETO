@@ -209,16 +209,7 @@ window.Quarto = {
 <p>Este relatório tem por objetivo ajustar um modelo de regressão linear múltiplo com o intuito de explorar a base de dados de <code>pinguins</code> para identificar determinadas características (medidas) associadas a 3 espécies de pinguins sobre a característica <code>profundidade do bico</code> (<code>“profundidade_bico”</code>).</p>
 <p>Neste contexto, a regressão será realizada sobre a conhecida base de dados <code>Pinguins</code>, que inclui espécies de pinguins e ilhas do Arquipélago Palmer, as medidas de cada espécie (comprimento da nadadeira, massa corporal e dimensões do bico), o sexo de cada pinguim e ano de documentação.</p>
 <p>Aqui estão fotos das espécies de pinguins:</p>
-<div id="fig-especiespinguins" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-especiespinguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="especies_de_pinguins.png" id="fig-especiespinguins" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-especiespinguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;1
-</figcaption>
-</figure>
-</div>
+<p><img src="especies_de_pinguins.png" id="fig-especiespinguins" class="img-fluid"> <br></p>
 </section>
 <section id="os-dados" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Os dados</h1>
@@ -856,7 +847,7 @@ F-statistic: 149.8 on 5 and 327 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>[1] 1012.741</code></pre>
 </div>
 </div>
-<p>Apesar de bem próximos e pela regra não há um indício significativo de real diferença, uma vez que a diferença entre os modelos não é maior que 10. O modelo 4 é preferível aos demais por ser o menor.</p>
+<p>Apesar de bem próximos e pela regra não há um indício significativo de real diferença, uma vez que a diferença entre os modelos não é maior que 10. O modelo 4 ainda é preferível aos demais por ser o menor.</p>
 </section>
 <section id="medida-bic" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="medida-bic"><span class="header-section-number">4.2</span> Medida BIC</h2>
@@ -1076,7 +1067,7 @@ Coefficients:
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="análise-dos-pressupostos"><span class="header-section-number">6.1.1</span> Análise dos pressupostos</h3>
 <ul>
 <li>Residuals x Fitted: Pode-se perceber que a linha vermelha não fere a homocedasticidade, uma vez que não apresenta uma inclinação significante, exibindo então, uma variância constante dos erros/resíduos.</li>
-<li>Q-Q Residuals: O gráfico apresenta que a grande maioria dos pontos segue distribuição normal, visto que os mesmosestão alinhados com a reta.</li>
+<li>Q-Q Residuals: O gráfico apresenta que a grande maioria dos pontos segue distribuição normal, visto que os mesmos estão alinhados com a reta.</li>
 <li>Scale-Location: Apresenta uma leve inclinação crescente, porém não o suficiente para indicar heterocedasticidade.</li>
 <li>Residuals x Leverage: Pode-se observar que o ponto 115 é um outlier.</li>
 </ul>
@@ -1236,8 +1227,8 @@ Standardized Coefficients::
 </section>
 <section id="conclusão" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> Conclusão</h1>
-<p>O modelo não demonstra violações no Modelo de Relação Linear Múltiplo (MRLM) e apresenta boa taxa de explicabilidade da variável dependente, uma vez que o R ajustado é de cerca de 70%.</p>
-<p>Apesar disso, o modelo pode cometer erros, mesmo que mínimos. Tais erros podem ocorrer por diversos fatores, inclusive por falta de dados suficientes para uma melhora significativa do modelo.</p>
+<p>O modelo ajustado não apresenta violações dos pressupostos do Modelo de Regressão Linear Múltipla (MRLM) e exibe uma boa capacidade explicativa da variável dependente, com um R ajustado em torno de 70%. Isso reflete uma boa capacidade de explicação da variabilidade da variável dependente pelas variáveis preditoras incluídas no modelo, o que sugere que ele está bem calibrado para os dados analisados.</p>
+<p>Contudo, é importante ressaltar que o modelo ainda está sujeito a erros, mesmo que mínimos. Esses erros podem decorrer de diversos fatores, como a presença de variáveis preditoras não incluídas que poderiam melhorar a precisão ou a ausência de um volume de dados suficiente para capturar plenamente a complexidade do fenômeno em análise. Além disso, a qualidade e representatividade dos dados disponíveis podem impactar o desempenho do modelo, limitando seu potencial de generalização para novos conjuntos de dados ou cenários diferentes. Assim, uma coleta mais ampla de dados ou a inclusão de novas variáveis relevantes poderiam contribuir para refinar o modelo e melhorar sua precisão preditiva.</p>
 </section>
 
 </main>
